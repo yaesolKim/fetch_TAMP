@@ -7,8 +7,8 @@
 * `roslaunch fetch_tufts pickplace_playground.launch`
 
 2. 데모 프로그램 런치
-* `roslaunch fetch_tufts pick_and_place_tufts.launch num_of_run:=1
-`
+* `roslaunch fetch_tufts pick_and_place_tufts.launch num_of_run:=1`
+
 
 ### 2. 기본 fetch_gazebo 이용하는 경우: moveit 쓰는 경우로, 아직 구현중
 
