@@ -1,0 +1,121 @@
+[35m[1mScanning dependencies of target diagnostic_msgs_generate_messages_eus[0m
+[35m[1mScanning dependencies of target diagnostic_msgs_generate_messages_lisp[0m
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_lisp[0m
+[35m[1mScanning dependencies of target diagnostic_msgs_generate_messages_cpp[0m
+[  0%] Built target rosgraph_msgs_generate_messages_lisp
+[  0%] Built target diagnostic_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target roscpp_generate_messages_cpp[0m
+[  0%] Built target diagnostic_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target rosplan_knowledge_msgs_generate_messages_lisp[0m
+[  0%] Built target roscpp_generate_messages_cpp
+[35m[1mScanning dependencies of target rosplan_knowledge_msgs_generate_messages_eus[0m
+[  0%] Built target diagnostic_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target roscpp_generate_messages_py[0m
+[  0%] Built target rosplan_knowledge_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target diagnostic_msgs_generate_messages_nodejs[0m
+[  0%] Built target rosplan_knowledge_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target _catkin_empty_exported_target[0m
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_cpp[0m
+[  0%] Built target roscpp_generate_messages_py
+[  0%] Built target diagnostic_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target std_msgs_generate_messages_cpp[0m
+[  0%] Built target _catkin_empty_exported_target
+[35m[1mScanning dependencies of target rosplan_knowledge_msgs_generate_messages_py[0m
+[  0%] Built target rosgraph_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target rosplan_knowledge_msgs_generate_messages_cpp[0m
+[35m[1mScanning dependencies of target diagnostic_msgs_generate_messages_py[0m
+[  0%] Built target std_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target std_msgs_generate_messages_eus[0m
+[  0%] Built target diagnostic_msgs_generate_messages_py
+[  0%] Built target rosplan_knowledge_msgs_generate_messages_cpp
+[  0%] Built target rosplan_knowledge_msgs_generate_messages_py
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_nodejs[0m
+[  0%] Built target std_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target std_msgs_generate_messages_lisp[0m
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_py[0m
+[35m[1mScanning dependencies of target rosplan_knowledge_msgs_generate_messages_nodejs[0m
+[  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target std_msgs_generate_messages_nodejs[0m
+[  0%] Built target std_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target std_msgs_generate_messages_py[0m
+[  0%] Built target rosplan_knowledge_msgs_generate_messages_nodejs
+[  0%] Built target rosgraph_msgs_generate_messages_py
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_py
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_cpp[0m
+[  0%] Built target geometry_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_lisp[0m
+[  0%] Built target geometry_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_nodejs[0m
+[  0%] Built target geometry_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target roscpp_generate_messages_lisp[0m
+[  0%] Built target roscpp_generate_messages_lisp
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_py[0m
+[  0%] Built target geometry_msgs_generate_messages_py
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_eus[0m
+[  0%] Built target geometry_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target roscpp_generate_messages_nodejs[0m
+[  0%] Built target roscpp_generate_messages_nodejs
+[35m[1mScanning dependencies of target roscpp_generate_messages_eus[0m
+[  0%] Built target roscpp_generate_messages_eus
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_eus[0m
+[  0%] Built target rosgraph_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target ippc_server[0m
+[  1%] [32mBuilding CXX object CMakeFiles/ippc_server.dir/ippc_server/src/ippc_server.cpp.o[0m
+[  3%] [32mBuilding CXX object CMakeFiles/ippc_server.dir/ippc_server/src/strxml.cpp.o[0m
+[  5%] [32mBuilding CXX object CMakeFiles/ippc_server.dir/ippc_server/cpp-base64/base64.cpp.o[0m
+[  7%] [32m[1mLinking CXX shared library /home/glab/fetch_TAMP/devel/.private/rosplan_dependencies/lib/libippc_server.so[0m
+[  7%] Built target ippc_server
+[35m[1mScanning dependencies of target val_kcl[0m
+[  9%] [32mBuilding CXX object CMakeFiles/val_kcl.dir/VAL/src/DebugWriteController.cpp.o[0m
+[ 11%] [32mBuilding CXX object CMakeFiles/val_kcl.dir/VAL/src/pddl+.cpp.o[0m
+[ 13%] [32mBuilding CXX object CMakeFiles/val_kcl.dir/VAL/src/ptree.cpp.o[0m
+[ 15%] [34m[1m[FLEX][RDDL_SCANNER] Building scanner with flex 2.6.4[0m
+[ 17%] [34m[1m[BISON][RDDL_PARSER] Building parser with bison 3.0.4[0m
+[35m[1mScanning dependencies of target rddl_parser[0m
+[ 19%] [32mBuilding CXX object CMakeFiles/rddl_parser.dir/parser.tab.cc.o[0m
+[ 21%] [32m[1mLinking CXX shared library /home/glab/fetch_TAMP/devel/.private/rosplan_dependencies/lib/libval_kcl.so[0m
+[ 21%] Built target val_kcl
+[ 23%] [34m[1m[FLEX][PPDDL_SCANNER] Building scanner with flex 2.6.4[0m
+[ 25%] [34m[1m[BISON][PPDDL_PARSER] Building parser with bison 3.0.4[0m
+[35m[1mScanning dependencies of target ppddl_parser[0m
+[ 27%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/PPDDLDeterminizator.cpp.o[0m
+[ 29%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/PPDDLParserInterface.cpp.o[0m
+[ 31%] [32mBuilding CXX object CMakeFiles/rddl_parser.dir/lex.yy.cc.o[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/rddl_parser.dir/rddl_parser/rddl.cc.o[0m
+[ 35%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/PDDLPrinter.cpp.o[0m
+[ 37%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/VALConversion.cpp.o[0m
+[ 39%] [32mBuilding CXX object CMakeFiles/rddl_parser.dir/rddl_parser/instantiator.cc.o[0m
+[ 41%] [32mBuilding CXX object CMakeFiles/rddl_parser.dir/rddl_parser/preprocessor.cc.o[0m
+[ 43%] [32mBuilding CXX object CMakeFiles/rddl_parser.dir/rddl_parser/task_analyzer.cc.o[0m
+[ 45%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/PPDDLParser/actions.cc.o[0m
+[ 47%] [32mBuilding CXX object CMakeFiles/rddl_parser.dir/rddl_parser/evaluatables.cc.o[0m
+[ 49%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/PPDDLParser/domains.cc.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/rddl_parser.dir/rddl_parser/logical_expressions.cc.o[0m
+[ 52%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/PPDDLParser/effects.cc.o[0m
+[ 54%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/PPDDLParser/expressions.cc.o[0m
+[ 56%] [32mBuilding CXX object CMakeFiles/rddl_parser.dir/rddl_parser/states.cc.o[0m
+[ 58%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/PPDDLParser/formulas.cc.o[0m
+[ 60%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/PPDDLParser/functions.cc.o[0m
+[ 62%] [32mBuilding CXX object CMakeFiles/rddl_parser.dir/rddl_parser/probability_distribution.cc.o[0m
+[ 64%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/PPDDLParser/predicates.cc.o[0m
+[ 66%] [32mBuilding CXX object CMakeFiles/rddl_parser.dir/rddl_parser/utils/timer.cc.o[0m
+[ 68%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/PPDDLParser/problems.cc.o[0m
+[ 70%] [32mBuilding CXX object CMakeFiles/rddl_parser.dir/rddl_parser/utils/string_utils.cc.o[0m
+[ 72%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/PPDDLParser/rational.cc.o[0m
+[ 74%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/PPDDLParser/requirements.cc.o[0m
+[ 76%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/PPDDLParser/terms.cc.o[0m
+[ 78%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/PPDDLParser/types.cc.o[0m
+[ 80%] [32mBuilding CXX object CMakeFiles/rddl_parser.dir/rddl_parser/utils/system_utils.cc.o[0m
+[ 82%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser.tab.cc.o[0m
+[ 84%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_lex.yy.cc.o[0m
+[ 86%] [32mBuilding CXX object CMakeFiles/rddl_parser.dir/rddl_parser/utils/math_utils.cc.o[0m
+[ 88%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/Strategies/MLODeterminizator.cpp.o[0m
+[ 90%] [32mBuilding CXX object CMakeFiles/rddl_parser.dir/rddl_parser/RDDLParser.cpp.o[0m
+[ 92%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/Strategies/AODeterminizator.cpp.o[0m
+[ 94%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/Strategies/TLDeterminizator.cpp.o[0m
+[ 96%] [32mBuilding CXX object CMakeFiles/ppddl_parser.dir/ppddl_parser/src/PPDDLDeterminizatorFactory.cpp.o[0m
+[ 98%] [32m[1mLinking CXX shared library /home/glab/fetch_TAMP/devel/.private/rosplan_dependencies/lib/librddl_parser.so[0m
+[ 98%] Built target rddl_parser
+[100%] [32m[1mLinking CXX shared library /home/glab/fetch_TAMP/devel/.private/rosplan_dependencies/lib/libppddl_parser.so[0m
+[100%] Built target ppddl_parser

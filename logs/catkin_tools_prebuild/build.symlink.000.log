@@ -1,0 +1,12 @@
+Symlinking /home/glab/fetch_TAMP/devel/./setup.zsh
+Symlinking /home/glab/fetch_TAMP/devel/./local_setup.sh
+Symlinking /home/glab/fetch_TAMP/devel/./local_setup.bash
+Symlinking /home/glab/fetch_TAMP/devel/./setup.bash
+Symlinking /home/glab/fetch_TAMP/devel/./cmake.lock
+Symlinking /home/glab/fetch_TAMP/devel/./_setup_util.py
+Symlinking /home/glab/fetch_TAMP/devel/./local_setup.zsh
+Symlinking /home/glab/fetch_TAMP/devel/./env.sh
+Symlinking /home/glab/fetch_TAMP/devel/./setup.sh
+Symlinking /home/glab/fetch_TAMP/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig-version.cmake
+Symlinking /home/glab/fetch_TAMP/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig.cmake
+Symlinking /home/glab/fetch_TAMP/devel/lib/pkgconfig/catkin_tools_prebuild.pc

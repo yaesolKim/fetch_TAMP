@@ -1,0 +1,7 @@
+Symlinking /home/glab/fetch_TAMP/devel/share/rosplan_dependencies/cmake/rosplan_dependenciesConfig.cmake
+Symlinking /home/glab/fetch_TAMP/devel/share/rosplan_dependencies/cmake/rosplan_dependenciesConfig-version.cmake
+Symlinking /home/glab/fetch_TAMP/devel/lib/librddl_parser.so
+Symlinking /home/glab/fetch_TAMP/devel/lib/libippc_server.so
+Symlinking /home/glab/fetch_TAMP/devel/lib/libppddl_parser.so
+Symlinking /home/glab/fetch_TAMP/devel/lib/libval_kcl.so
+Symlinking /home/glab/fetch_TAMP/devel/lib/pkgconfig/rosplan_dependencies.pc

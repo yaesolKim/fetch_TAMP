@@ -1,0 +1,8 @@
+prefix=/home/glab/fetch_TAMP/devel/.private/rosplan_dependencies
+
+Name: rosplan_dependencies
+Description: Description of rosplan_dependencies
+Version: 0.1.0
+Cflags: -I/home/glab/fetch_TAMP/devel/.private/rosplan_knowledge_msgs/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include -I/home/glab/fetch_TAMP/src/rosplan/rosplan_dependencies/VAL/include -I/home/glab/fetch_TAMP/src/rosplan/rosplan_dependencies/rddl_parser -I/home/glab/fetch_TAMP/src/rosplan/rosplan_dependencies/ippc_server/include -I/home/glab/fetch_TAMP/src/rosplan/rosplan_dependencies/ippc_server/cpp-base64 -I/home/glab/fetch_TAMP/src/rosplan/rosplan_dependencies/ppddl_parser/include -I/home/glab/fetch_TAMP/src/rosplan/rosplan_dependencies/ppddl_parser/src
+Libs: -L${prefix}/lib -lval_kcl -lrddl_parser -lippc_server -lppddl_parser
+Requires: roscpp rosplan_knowledge_msgs

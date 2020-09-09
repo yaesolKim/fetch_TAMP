@@ -1,0 +1,4 @@
+Symlinking /home/glab/fetch_TAMP/devel/share/rosplan_interface_movebase/cmake/rosplan_interface_movebaseConfig.cmake
+Symlinking /home/glab/fetch_TAMP/devel/share/rosplan_interface_movebase/cmake/rosplan_interface_movebaseConfig-version.cmake
+Symlinking /home/glab/fetch_TAMP/devel/lib/pkgconfig/rosplan_interface_movebase.pc
+Symlinking /home/glab/fetch_TAMP/devel/lib/rosplan_interface_movebase/rpmovebase

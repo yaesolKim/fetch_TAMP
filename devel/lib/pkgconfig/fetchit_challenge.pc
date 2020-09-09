@@ -1,0 +1,1 @@
+/home/glab/fetch_TAMP/devel/.private/fetchit_challenge/lib/pkgconfig/fetchit_challenge.pc

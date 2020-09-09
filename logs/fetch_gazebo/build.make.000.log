@@ -1,0 +1,4 @@
+[35m[1mScanning dependencies of target fetch_gazebo_plugin[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/fetch_gazebo_plugin.dir/src/plugin.cpp.o[0m
+[100%] [32m[1mLinking CXX shared library /home/glab/fetch_TAMP/devel/.private/fetch_gazebo/lib/libfetch_gazebo_plugin.so[0m
+[100%] Built target fetch_gazebo_plugin

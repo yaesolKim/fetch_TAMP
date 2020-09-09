@@ -1,0 +1,8 @@
+prefix=/home/glab/fetch_TAMP/devel/.private/fetch_teleop
+
+Name: fetch_teleop
+Description: Description of fetch_teleop
+Version: 0.8.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

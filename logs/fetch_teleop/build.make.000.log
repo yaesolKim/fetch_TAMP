@@ -1,0 +1,4 @@
+[35m[1mScanning dependencies of target joystick_teleop[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/joystick_teleop.dir/src/joystick_teleop.cpp.o[0m
+[100%] [32m[1mLinking CXX executable /home/glab/fetch_TAMP/devel/.private/fetch_teleop/lib/fetch_teleop/joystick_teleop[0m
+[100%] Built target joystick_teleop

@@ -1,0 +1,8 @@
+prefix=/home/glab/fetch_TAMP/install
+
+Name: fetch_tufts
+Description: Description of fetch_tufts
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

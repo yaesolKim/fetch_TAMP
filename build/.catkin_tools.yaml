@@ -1,0 +1,6 @@
+devel_space: /home/glab/fetch_TAMP/devel
+install: false
+install_space: /home/glab/fetch_TAMP/install
+profile: default
+source_space: /home/glab/fetch_TAMP/src
+workspace: /home/glab/fetch_TAMP

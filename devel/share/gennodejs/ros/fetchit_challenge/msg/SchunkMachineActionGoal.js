@@ -1,0 +1,1 @@
+/home/glab/fetch_TAMP/devel/.private/fetchit_challenge/share/gennodejs/ros/fetchit_challenge/msg/SchunkMachineActionGoal.js

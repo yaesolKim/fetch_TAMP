@@ -1,0 +1,25 @@
+[  0%] Built target _fetchit_challenge_generate_messages_check_deps_SickCameraActionFeedback
+[  0%] Built target _fetchit_challenge_generate_messages_check_deps_SickCameraResult
+[  0%] Built target _fetchit_challenge_generate_messages_check_deps_SchunkMachineActionGoal
+[  0%] Built target _fetchit_challenge_generate_messages_check_deps_SchunkMachineGoal
+[  0%] Built target _fetchit_challenge_generate_messages_check_deps_SickCameraFeedback
+[  0%] Built target _fetchit_challenge_generate_messages_check_deps_SchunkMachineAction
+[  0%] Built target _fetchit_challenge_generate_messages_check_deps_SickCameraActionGoal
+[  0%] Built target _fetchit_challenge_generate_messages_check_deps_SchunkMachineActionFeedback
+[  0%] Built target _fetchit_challenge_generate_messages_check_deps_SickCameraAction
+[  0%] Built target _fetchit_challenge_generate_messages_check_deps_SickCameraActionResult
+[  0%] Built target actionlib_msgs_generate_messages_cpp
+[  0%] Built target _fetchit_challenge_generate_messages_check_deps_SickCameraGoal
+[  0%] Built target actionlib_msgs_generate_messages_py
+[  0%] Built target actionlib_msgs_generate_messages_eus
+[  0%] Built target actionlib_msgs_generate_messages_lisp
+[  0%] Built target _fetchit_challenge_generate_messages_check_deps_SchunkMachineFeedback
+[  0%] Built target actionlib_msgs_generate_messages_nodejs
+[  0%] Built target _fetchit_challenge_generate_messages_check_deps_SchunkMachineResult
+[  0%] Built target _fetchit_challenge_generate_messages_check_deps_SchunkMachineActionResult
+[ 19%] Built target fetchit_challenge_generate_messages_nodejs
+[ 38%] Built target fetchit_challenge_generate_messages_cpp
+[ 59%] Built target fetchit_challenge_generate_messages_py
+[ 80%] Built target fetchit_challenge_generate_messages_eus
+[100%] Built target fetchit_challenge_generate_messages_lisp
+[100%] Built target fetchit_challenge_generate_messages
