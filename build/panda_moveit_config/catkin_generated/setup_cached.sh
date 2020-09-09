@@ -8,8 +8,8 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/glab/fetch_TAMP/devel/.private/panda_moveit_config:$CMAKE_PREFIX_PATH"
-export PATH="/home/glab/fetch_TAMP/devel/bin:$PATH"
+export LD_LIBRARY_PATH="/home/glab/fetch_TAMP/devel/.private/panda_moveit_config/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/glab/fetch_TAMP/devel/.private/panda_moveit_config/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/glab/fetch_TAMP/build/panda_moveit_config'
-export PYTHONPATH="/home/glab/fetch_TAMP/devel/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/glab/fetch_TAMP/devel/.private/panda_moveit_config/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/glab/fetch_TAMP/src/panda_moveit_config:$ROS_PACKAGE_PATH"

@@ -1,0 +1,43 @@
+[01m[K/home/glab/fetch_TAMP/src/moveit_tutorials/doc/state_display/src/state_display_tutorial.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/glab/fetch_TAMP/src/moveit_tutorials/doc/state_display/src/state_display_tutorial.cpp:115:93:[m[K [01;35m[Kwarning: [m[K‘[01m[Kbool moveit::core::RobotState::setFromIK(const moveit::core::JointModelGroup*, const Isometry3d&, unsigned int, double, const GroupStateValidityCallbackFn&, const kinematics::KinematicsQueryOptions&)[m[K’ is deprecated: The attempts argument is not supported anymore. [[01;35m[K-Wdeprecated-declarations[m[K]
+     bool found_ik = kinematic_state->setFromIK(joint_model_group, end_effector_pose, 10, 0.1[01;35m[K)[m[K;
+                                                                                             [01;35m[K^[m[K
+In file included from [01m[K/home/glab/fetch_TAMP/src/moveit_tutorials/doc/state_display/src/state_display_tutorial.cpp:42:0[m[K:
+[01m[K/opt/ros/melodic/include/moveit/robot_state/robot_state.h:996:3:[m[K [01;36m[Knote: [m[Kdeclared here
+   [01;36m[KsetFromIK[m[K(const JointModelGroup* group, const Eigen::Isometry3d& pose, unsigned int /*attempts*/,
+   [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/glab/fetch_TAMP/src/moveit_tutorials/doc/interactivity/src/interactive_robot.cpp:[m[K In member function ‘[01m[Kvoid InteractiveRobot::updateAll()[m[K’:
+[01m[K/home/glab/fetch_TAMP/src/moveit_tutorials/doc/interactivity/src/interactive_robot.cpp:235:76:[m[K [01;35m[Kwarning: [m[K‘[01m[Kbool moveit::core::RobotState::setFromIK(const moveit::core::JointModelGroup*, const Isometry3d&, unsigned int, double, const GroupStateValidityCallbackFn&, const kinematics::KinematicsQueryOptions&)[m[K’ is deprecated: The attempts argument is not supported anymore. [[01;35m[K-Wdeprecated-declarations[m[K]
+   if (robot_state_->setFromIK(group_, desired_group_end_link_pose_, 10, 0.1[01;35m[K)[m[K)
+                                                                            [01;35m[K^[m[K
+In file included from [01m[K/home/glab/fetch_TAMP/src/moveit_tutorials/doc/interactivity/include/interactivity/interactive_robot.h:45:0[m[K,
+                 from [01m[K/home/glab/fetch_TAMP/src/moveit_tutorials/doc/interactivity/src/interactive_robot.cpp:39[m[K:
+[01m[K/opt/ros/melodic/include/moveit/robot_state/robot_state.h:996:3:[m[K [01;36m[Knote: [m[Kdeclared here
+   [01;36m[KsetFromIK[m[K(const JointModelGroup* group, const Eigen::Isometry3d& pose, unsigned int /*attempts*/,
+   [01;36m[K^~~~~~~~~[m[K
+/usr/bin/ld: warning: libmoveit_planning_scene_monitor.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_robot_model.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_transforms.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_robot_state.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_robot_trajectory.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_collision_detection.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_planning_scene.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_planning_scene_monitor.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_robot_model.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_transforms.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_robot_state.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_robot_trajectory.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_collision_detection.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_planning_scene.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_planning_scene_monitor.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_robot_model.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_transforms.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_robot_state.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_robot_trajectory.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_collision_detection.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/usr/bin/ld: warning: libmoveit_planning_scene.so.1.0.6, needed by /opt/ros/melodic/lib/libmoveit_visual_tools.so, not found (try using -rpath or -rpath-link)
+/home/glab/fetch_TAMP/devel/.private/moveit_tutorials/lib/libinteractivity_utils.so: undefined reference to `IMarker::move(Eigen::Transform<double, 3, 1, 0> const&)'
+collect2: error: ld returned 1 exit status
+make[2]: *** [/home/glab/fetch_TAMP/devel/.private/moveit_tutorials/lib/moveit_tutorials/visualizing_collisions_tutorial] Error 1
+make[1]: *** [doc/visualizing_collisions/CMakeFiles/visualizing_collisions_tutorial.dir/all] Error 2
+make: *** [all] Error 2
