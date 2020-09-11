@@ -361,8 +361,6 @@ vector
 -
 map
 -
-memory
--
 boost/function.hpp
 -
 Eigen/Geometry
@@ -374,8 +372,6 @@ eigen_stl_containers/eigen_stl_vector_container.h
 moveit/collision_detection/world.h
 -
 moveit/macros/class_forward.h
--
-memory
 -
 
 /opt/ros/melodic/include/moveit/exceptions/exceptions.h
@@ -403,7 +399,7 @@ vector
 -
 
 /opt/ros/melodic/include/moveit/kinematic_constraints/utils.h
-moveit_msgs/MotionPlanRequest.h
+moveit_msgs/Constraints.h
 -
 geometry_msgs/PointStamped.h
 -
@@ -417,7 +413,7 @@ limits
 -
 
 /opt/ros/melodic/include/moveit/kinematics_base/kinematics_base.h
-geometry_msgs/PoseStamped.h
+geometry_msgs/Pose.h
 -
 moveit_msgs/MoveItErrorCodes.h
 -
@@ -641,8 +637,6 @@ deque
 /opt/ros/melodic/include/moveit/transforms/transforms.h
 geometry_msgs/TransformStamped.h
 -
-geometry_msgs/Pose.h
--
 Eigen/Geometry
 -
 boost/noncopyable.hpp
@@ -848,32 +842,6 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/opt/ros/melodic/include/moveit_msgs/MotionPlanRequest.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-moveit_msgs/WorkspaceParameters.h
--
-moveit_msgs/RobotState.h
--
-moveit_msgs/Constraints.h
--
-moveit_msgs/Constraints.h
--
-moveit_msgs/TrajectoryConstraints.h
--
-
 /opt/ros/melodic/include/moveit_msgs/MoveItErrorCodes.h
 string
 -
@@ -1058,24 +1026,6 @@ trajectory_msgs/JointTrajectory.h
 trajectory_msgs/MultiDOFJointTrajectory.h
 -
 
-/opt/ros/melodic/include/moveit_msgs/TrajectoryConstraints.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-moveit_msgs/Constraints.h
--
-
 /opt/ros/melodic/include/moveit_msgs/VisibilityConstraint.h
 string
 -
@@ -1094,28 +1044,6 @@ ros/message_operations.h
 geometry_msgs/PoseStamped.h
 -
 geometry_msgs/PoseStamped.h
--
-
-/opt/ros/melodic/include/moveit_msgs/WorkspaceParameters.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-std_msgs/Header.h
--
-geometry_msgs/Vector3.h
--
-geometry_msgs/Vector3.h
 -
 
 /opt/ros/melodic/include/object_recognition_msgs/ObjectType.h

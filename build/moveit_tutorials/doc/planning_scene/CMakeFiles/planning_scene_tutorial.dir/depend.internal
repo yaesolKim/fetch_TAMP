@@ -60,7 +60,6 @@ doc/planning_scene/CMakeFiles/planning_scene_tutorial.dir/src/planning_scene_tut
  /opt/ros/melodic/include/moveit_msgs/JointLimits.h
  /opt/ros/melodic/include/moveit_msgs/LinkPadding.h
  /opt/ros/melodic/include/moveit_msgs/LinkScale.h
- /opt/ros/melodic/include/moveit_msgs/MotionPlanRequest.h
  /opt/ros/melodic/include/moveit_msgs/MoveItErrorCodes.h
  /opt/ros/melodic/include/moveit_msgs/ObjectColor.h
  /opt/ros/melodic/include/moveit_msgs/OrientationConstraint.h
@@ -70,9 +69,7 @@ doc/planning_scene/CMakeFiles/planning_scene_tutorial.dir/src/planning_scene_tut
  /opt/ros/melodic/include/moveit_msgs/PositionConstraint.h
  /opt/ros/melodic/include/moveit_msgs/RobotState.h
  /opt/ros/melodic/include/moveit_msgs/RobotTrajectory.h
- /opt/ros/melodic/include/moveit_msgs/TrajectoryConstraints.h
  /opt/ros/melodic/include/moveit_msgs/VisibilityConstraint.h
- /opt/ros/melodic/include/moveit_msgs/WorkspaceParameters.h
  /opt/ros/melodic/include/object_recognition_msgs/ObjectType.h
  /opt/ros/melodic/include/octomap_msgs/Octomap.h
  /opt/ros/melodic/include/octomap_msgs/OctomapWithPose.h

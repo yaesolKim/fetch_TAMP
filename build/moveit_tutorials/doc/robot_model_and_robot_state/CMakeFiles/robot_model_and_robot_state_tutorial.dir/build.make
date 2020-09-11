@@ -103,6 +103,7 @@ robot_model_and_robot_state_tutorial_EXTERNAL_OBJECTS =
 /home/glab/fetch_TAMP/devel/.private/moveit_tutorials/lib/moveit_tutorials/robot_model_and_robot_state_tutorial: /opt/ros/melodic/lib/libmoveit_planning_scene_interface.so
 /home/glab/fetch_TAMP/devel/.private/moveit_tutorials/lib/moveit_tutorials/robot_model_and_robot_state_tutorial: /opt/ros/melodic/lib/libmoveit_move_group_interface.so
 /home/glab/fetch_TAMP/devel/.private/moveit_tutorials/lib/moveit_tutorials/robot_model_and_robot_state_tutorial: /opt/ros/melodic/lib/libmoveit_py_bindings_tools.so
+/home/glab/fetch_TAMP/devel/.private/moveit_tutorials/lib/moveit_tutorials/robot_model_and_robot_state_tutorial: /opt/ros/melodic/lib/libmoveit_cpp.so
 /home/glab/fetch_TAMP/devel/.private/moveit_tutorials/lib/moveit_tutorials/robot_model_and_robot_state_tutorial: /opt/ros/melodic/lib/libmoveit_warehouse.so
 /home/glab/fetch_TAMP/devel/.private/moveit_tutorials/lib/moveit_tutorials/robot_model_and_robot_state_tutorial: /opt/ros/melodic/lib/libwarehouse_ros.so
 /home/glab/fetch_TAMP/devel/.private/moveit_tutorials/lib/moveit_tutorials/robot_model_and_robot_state_tutorial: /opt/ros/melodic/lib/libmoveit_pick_place_planner.so

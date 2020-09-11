@@ -51,7 +51,6 @@ doc/kinematics/CMakeFiles/ros_api_tutorial.dir/src/ros_api_tutorial.cpp.o
  /opt/ros/melodic/include/moveit_msgs/PositionConstraint.h
  /opt/ros/melodic/include/moveit_msgs/PositionIKRequest.h
  /opt/ros/melodic/include/moveit_msgs/RobotState.h
- /opt/ros/melodic/include/moveit_msgs/RobotTrajectory.h
  /opt/ros/melodic/include/moveit_msgs/VisibilityConstraint.h
  /opt/ros/melodic/include/object_recognition_msgs/ObjectType.h
  /opt/ros/melodic/include/random_numbers/random_numbers.h
@@ -122,8 +121,6 @@ doc/kinematics/CMakeFiles/ros_api_tutorial.dir/src/ros_api_tutorial.cpp.o
  /opt/ros/melodic/include/std_msgs/Header.h
  /opt/ros/melodic/include/trajectory_msgs/JointTrajectory.h
  /opt/ros/melodic/include/trajectory_msgs/JointTrajectoryPoint.h
- /opt/ros/melodic/include/trajectory_msgs/MultiDOFJointTrajectory.h
- /opt/ros/melodic/include/trajectory_msgs/MultiDOFJointTrajectoryPoint.h
  /opt/ros/melodic/include/urdf/model.h
  /opt/ros/melodic/include/urdf/urdfdom_compatibility.h
  /opt/ros/melodic/include/urdf/visibility_control.hpp

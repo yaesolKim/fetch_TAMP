@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "panda_moveit_config"
 PROJECT_SPACE_DIR = "/home/glab/fetch_TAMP/devel/.private/panda_moveit_config"
-PROJECT_VERSION = "0.7.2"
+PROJECT_VERSION = "0.7.4"

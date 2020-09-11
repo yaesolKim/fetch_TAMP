@@ -88,26 +88,6 @@ geometry_msgs/Point.h
 geometry_msgs/Quaternion.h
 -
 
-/opt/ros/melodic/include/geometry_msgs/PoseStamped.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-std_msgs/Header.h
--
-geometry_msgs/Pose.h
--
-
 /opt/ros/melodic/include/geometry_msgs/Quaternion.h
 string
 -
@@ -225,7 +205,7 @@ stdexcept
 -
 
 /opt/ros/melodic/include/moveit/kinematics_base/kinematics_base.h
-geometry_msgs/PoseStamped.h
+geometry_msgs/Pose.h
 -
 moveit_msgs/MoveItErrorCodes.h
 -

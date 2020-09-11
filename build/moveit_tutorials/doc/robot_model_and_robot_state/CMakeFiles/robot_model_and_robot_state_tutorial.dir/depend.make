@@ -7,7 +7,6 @@ doc/robot_model_and_robot_state/CMakeFiles/robot_model_and_robot_state_tutorial.
 doc/robot_model_and_robot_state/CMakeFiles/robot_model_and_robot_state_tutorial.dir/src/robot_model_and_robot_state_tutorial.cpp.o: /opt/ros/melodic/include/eigen_stl_containers/eigen_stl_vector_container.h
 doc/robot_model_and_robot_state/CMakeFiles/robot_model_and_robot_state_tutorial.dir/src/robot_model_and_robot_state_tutorial.cpp.o: /opt/ros/melodic/include/geometry_msgs/Point.h
 doc/robot_model_and_robot_state/CMakeFiles/robot_model_and_robot_state_tutorial.dir/src/robot_model_and_robot_state_tutorial.cpp.o: /opt/ros/melodic/include/geometry_msgs/Pose.h
-doc/robot_model_and_robot_state/CMakeFiles/robot_model_and_robot_state_tutorial.dir/src/robot_model_and_robot_state_tutorial.cpp.o: /opt/ros/melodic/include/geometry_msgs/PoseStamped.h
 doc/robot_model_and_robot_state/CMakeFiles/robot_model_and_robot_state_tutorial.dir/src/robot_model_and_robot_state_tutorial.cpp.o: /opt/ros/melodic/include/geometry_msgs/Quaternion.h
 doc/robot_model_and_robot_state/CMakeFiles/robot_model_and_robot_state_tutorial.dir/src/robot_model_and_robot_state_tutorial.cpp.o: /opt/ros/melodic/include/geometry_msgs/Twist.h
 doc/robot_model_and_robot_state/CMakeFiles/robot_model_and_robot_state_tutorial.dir/src/robot_model_and_robot_state_tutorial.cpp.o: /opt/ros/melodic/include/geometry_msgs/Vector3.h

@@ -393,8 +393,6 @@ vector
 -
 map
 -
-memory
--
 boost/function.hpp
 -
 Eigen/Geometry
@@ -406,8 +404,6 @@ eigen_stl_containers/eigen_stl_vector_container.h
 moveit/collision_detection/world.h
 -
 moveit/macros/class_forward.h
--
-memory
 -
 
 /opt/ros/melodic/include/moveit/collision_detection_fcl/collision_common.h
@@ -481,7 +477,7 @@ vector
 -
 
 /opt/ros/melodic/include/moveit/kinematics_base/kinematics_base.h
-geometry_msgs/PoseStamped.h
+geometry_msgs/Pose.h
 -
 moveit_msgs/MoveItErrorCodes.h
 -
@@ -704,8 +700,6 @@ deque
 
 /opt/ros/melodic/include/moveit/transforms/transforms.h
 geometry_msgs/TransformStamped.h
--
-geometry_msgs/Pose.h
 -
 Eigen/Geometry
 -
@@ -1285,13 +1279,13 @@ ros/time.h
 /opt/ros/melodic/include/ros/callback_queue.h
 ros/callback_queue_interface.h
 /opt/ros/melodic/include/ros/ros/callback_queue_interface.h
+ros/internal/condition_variable.h
+/opt/ros/melodic/include/ros/ros/internal/condition_variable.h
 ros/time.h
 /opt/ros/melodic/include/ros/ros/time.h
 common.h
 /opt/ros/melodic/include/ros/common.h
 boost/shared_ptr.hpp
--
-boost/thread/condition_variable.hpp
 -
 boost/thread/mutex.hpp
 -
@@ -1429,6 +1423,10 @@ ros/spinner.h
 /opt/ros/melodic/include/ros/ros/spinner.h
 common.h
 /opt/ros/melodic/include/ros/common.h
+
+/opt/ros/melodic/include/ros/internal/condition_variable.h
+boost/thread/condition_variable.hpp
+-
 
 /opt/ros/melodic/include/ros/macros.h
 

@@ -8,7 +8,6 @@ doc/robot_model_and_robot_state/CMakeFiles/robot_model_and_robot_state_tutorial.
  /opt/ros/melodic/include/eigen_stl_containers/eigen_stl_vector_container.h
  /opt/ros/melodic/include/geometry_msgs/Point.h
  /opt/ros/melodic/include/geometry_msgs/Pose.h
- /opt/ros/melodic/include/geometry_msgs/PoseStamped.h
  /opt/ros/melodic/include/geometry_msgs/Quaternion.h
  /opt/ros/melodic/include/geometry_msgs/Twist.h
  /opt/ros/melodic/include/geometry_msgs/Vector3.h

@@ -50,7 +50,6 @@ doc/kinematics/CMakeFiles/ros_api_tutorial.dir/src/ros_api_tutorial.cpp.o: /opt/
 doc/kinematics/CMakeFiles/ros_api_tutorial.dir/src/ros_api_tutorial.cpp.o: /opt/ros/melodic/include/moveit_msgs/PositionConstraint.h
 doc/kinematics/CMakeFiles/ros_api_tutorial.dir/src/ros_api_tutorial.cpp.o: /opt/ros/melodic/include/moveit_msgs/PositionIKRequest.h
 doc/kinematics/CMakeFiles/ros_api_tutorial.dir/src/ros_api_tutorial.cpp.o: /opt/ros/melodic/include/moveit_msgs/RobotState.h
-doc/kinematics/CMakeFiles/ros_api_tutorial.dir/src/ros_api_tutorial.cpp.o: /opt/ros/melodic/include/moveit_msgs/RobotTrajectory.h
 doc/kinematics/CMakeFiles/ros_api_tutorial.dir/src/ros_api_tutorial.cpp.o: /opt/ros/melodic/include/moveit_msgs/VisibilityConstraint.h
 doc/kinematics/CMakeFiles/ros_api_tutorial.dir/src/ros_api_tutorial.cpp.o: /opt/ros/melodic/include/object_recognition_msgs/ObjectType.h
 doc/kinematics/CMakeFiles/ros_api_tutorial.dir/src/ros_api_tutorial.cpp.o: /opt/ros/melodic/include/random_numbers/random_numbers.h
@@ -121,8 +120,6 @@ doc/kinematics/CMakeFiles/ros_api_tutorial.dir/src/ros_api_tutorial.cpp.o: /opt/
 doc/kinematics/CMakeFiles/ros_api_tutorial.dir/src/ros_api_tutorial.cpp.o: /opt/ros/melodic/include/std_msgs/Header.h
 doc/kinematics/CMakeFiles/ros_api_tutorial.dir/src/ros_api_tutorial.cpp.o: /opt/ros/melodic/include/trajectory_msgs/JointTrajectory.h
 doc/kinematics/CMakeFiles/ros_api_tutorial.dir/src/ros_api_tutorial.cpp.o: /opt/ros/melodic/include/trajectory_msgs/JointTrajectoryPoint.h
-doc/kinematics/CMakeFiles/ros_api_tutorial.dir/src/ros_api_tutorial.cpp.o: /opt/ros/melodic/include/trajectory_msgs/MultiDOFJointTrajectory.h
-doc/kinematics/CMakeFiles/ros_api_tutorial.dir/src/ros_api_tutorial.cpp.o: /opt/ros/melodic/include/trajectory_msgs/MultiDOFJointTrajectoryPoint.h
 doc/kinematics/CMakeFiles/ros_api_tutorial.dir/src/ros_api_tutorial.cpp.o: /opt/ros/melodic/include/urdf/model.h
 doc/kinematics/CMakeFiles/ros_api_tutorial.dir/src/ros_api_tutorial.cpp.o: /opt/ros/melodic/include/urdf/urdfdom_compatibility.h
 doc/kinematics/CMakeFiles/ros_api_tutorial.dir/src/ros_api_tutorial.cpp.o: /opt/ros/melodic/include/urdf/visibility_control.hpp

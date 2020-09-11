@@ -8,7 +8,6 @@ doc/state_display/CMakeFiles/state_display_tutorial.dir/src/state_display_tutori
  /opt/ros/melodic/include/eigen_stl_containers/eigen_stl_vector_container.h
  /opt/ros/melodic/include/geometry_msgs/Point.h
  /opt/ros/melodic/include/geometry_msgs/Pose.h
- /opt/ros/melodic/include/geometry_msgs/PoseStamped.h
  /opt/ros/melodic/include/geometry_msgs/Quaternion.h
  /opt/ros/melodic/include/geometry_msgs/Transform.h
  /opt/ros/melodic/include/geometry_msgs/TransformStamped.h
@@ -42,7 +41,6 @@ doc/state_display/CMakeFiles/state_display_tutorial.dir/src/state_display_tutori
  /opt/ros/melodic/include/moveit_msgs/MoveItErrorCodes.h
  /opt/ros/melodic/include/moveit_msgs/ObjectColor.h
  /opt/ros/melodic/include/moveit_msgs/RobotState.h
- /opt/ros/melodic/include/moveit_msgs/RobotTrajectory.h
  /opt/ros/melodic/include/object_recognition_msgs/ObjectType.h
  /opt/ros/melodic/include/random_numbers/random_numbers.h
  /opt/ros/melodic/include/ros/advertise_options.h
@@ -112,8 +110,6 @@ doc/state_display/CMakeFiles/state_display_tutorial.dir/src/state_display_tutori
  /opt/ros/melodic/include/std_msgs/Header.h
  /opt/ros/melodic/include/trajectory_msgs/JointTrajectory.h
  /opt/ros/melodic/include/trajectory_msgs/JointTrajectoryPoint.h
- /opt/ros/melodic/include/trajectory_msgs/MultiDOFJointTrajectory.h
- /opt/ros/melodic/include/trajectory_msgs/MultiDOFJointTrajectoryPoint.h
  /opt/ros/melodic/include/urdf/model.h
  /opt/ros/melodic/include/urdf/urdfdom_compatibility.h
  /opt/ros/melodic/include/urdf/visibility_control.hpp

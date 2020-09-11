@@ -95,8 +95,8 @@ clean: CMakeFiles/clean_test_results_rosplan_knowledge_base.dir/clean
 # Target rules for target CMakeFiles/_run_tests_rosplan_knowledge_base_rostest_test_launch_knowledge_base.test.dir
 
 # All Build rule for target.
-CMakeFiles/_run_tests_rosplan_knowledge_base_rostest_test_launch_knowledge_base.test.dir/all: CMakeFiles/KnowledgeBaseTests.dir/all
 CMakeFiles/_run_tests_rosplan_knowledge_base_rostest_test_launch_knowledge_base.test.dir/all: CMakeFiles/tests.dir/all
+CMakeFiles/_run_tests_rosplan_knowledge_base_rostest_test_launch_knowledge_base.test.dir/all: CMakeFiles/KnowledgeBaseTests.dir/all
 CMakeFiles/_run_tests_rosplan_knowledge_base_rostest_test_launch_knowledge_base.test.dir/all: CMakeFiles/clean_test_results_rosplan_knowledge_base.dir/all
 	$(MAKE) -f CMakeFiles/_run_tests_rosplan_knowledge_base_rostest_test_launch_knowledge_base.test.dir/build.make CMakeFiles/_run_tests_rosplan_knowledge_base_rostest_test_launch_knowledge_base.test.dir/depend
 	$(MAKE) -f CMakeFiles/_run_tests_rosplan_knowledge_base_rostest_test_launch_knowledge_base.test.dir/build.make CMakeFiles/_run_tests_rosplan_knowledge_base_rostest_test_launch_knowledge_base.test.dir/build

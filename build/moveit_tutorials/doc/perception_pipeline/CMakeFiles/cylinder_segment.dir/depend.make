@@ -7,7 +7,6 @@ doc/perception_pipeline/CMakeFiles/cylinder_segment.dir/src/cylinder_segment.cpp
 doc/perception_pipeline/CMakeFiles/cylinder_segment.dir/src/cylinder_segment.cpp.o: /opt/ros/melodic/include/eigen_stl_containers/eigen_stl_vector_container.h
 doc/perception_pipeline/CMakeFiles/cylinder_segment.dir/src/cylinder_segment.cpp.o: /opt/ros/melodic/include/geometry_msgs/Point.h
 doc/perception_pipeline/CMakeFiles/cylinder_segment.dir/src/cylinder_segment.cpp.o: /opt/ros/melodic/include/geometry_msgs/Pose.h
-doc/perception_pipeline/CMakeFiles/cylinder_segment.dir/src/cylinder_segment.cpp.o: /opt/ros/melodic/include/geometry_msgs/PoseStamped.h
 doc/perception_pipeline/CMakeFiles/cylinder_segment.dir/src/cylinder_segment.cpp.o: /opt/ros/melodic/include/geometry_msgs/Quaternion.h
 doc/perception_pipeline/CMakeFiles/cylinder_segment.dir/src/cylinder_segment.cpp.o: /opt/ros/melodic/include/geometry_msgs/Transform.h
 doc/perception_pipeline/CMakeFiles/cylinder_segment.dir/src/cylinder_segment.cpp.o: /opt/ros/melodic/include/geometry_msgs/TransformStamped.h

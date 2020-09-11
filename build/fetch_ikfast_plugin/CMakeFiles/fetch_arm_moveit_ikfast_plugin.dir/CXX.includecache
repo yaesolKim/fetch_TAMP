@@ -401,7 +401,7 @@ ros/macros.h
 -
 
 /opt/ros/melodic/include/moveit/kinematics_base/kinematics_base.h
-geometry_msgs/PoseStamped.h
+geometry_msgs/Pose.h
 -
 moveit_msgs/MoveItErrorCodes.h
 -

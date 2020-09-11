@@ -221,7 +221,7 @@ stdexcept
 -
 
 /opt/ros/melodic/include/moveit/kinematics_base/kinematics_base.h
-geometry_msgs/PoseStamped.h
+geometry_msgs/Pose.h
 -
 moveit_msgs/MoveItErrorCodes.h
 -
@@ -381,8 +381,6 @@ moveit/transforms/transforms.h
 -
 moveit_msgs/RobotState.h
 -
-moveit_msgs/RobotTrajectory.h
--
 
 /opt/ros/melodic/include/moveit/robot_state/robot_state.h
 moveit/robot_model/robot_model.h
@@ -404,8 +402,6 @@ boost/assert.hpp
 
 /opt/ros/melodic/include/moveit/transforms/transforms.h
 geometry_msgs/TransformStamped.h
--
-geometry_msgs/Pose.h
 -
 Eigen/Geometry
 -
@@ -732,26 +728,6 @@ sensor_msgs/JointState.h
 sensor_msgs/MultiDOFJointState.h
 -
 moveit_msgs/AttachedCollisionObject.h
--
-
-/opt/ros/melodic/include/moveit_msgs/RobotTrajectory.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-trajectory_msgs/JointTrajectory.h
--
-trajectory_msgs/MultiDOFJointTrajectory.h
 -
 
 /opt/ros/melodic/include/moveit_msgs/VisibilityConstraint.h
@@ -1640,48 +1616,6 @@ ros/serialization.h
 ros/builtin_message_traits.h
 -
 ros/message_operations.h
--
-
-/opt/ros/melodic/include/trajectory_msgs/MultiDOFJointTrajectory.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-std_msgs/Header.h
--
-trajectory_msgs/MultiDOFJointTrajectoryPoint.h
--
-
-/opt/ros/melodic/include/trajectory_msgs/MultiDOFJointTrajectoryPoint.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-geometry_msgs/Transform.h
--
-geometry_msgs/Twist.h
--
-geometry_msgs/Twist.h
 -
 
 /opt/ros/melodic/include/urdf/model.h

@@ -1,240 +1,26 @@
 #!/usr/bin/env python
 
-# Copyright (c) 2015, Fetch Robotics Inc.
-# All rights reserved.
-#
-# Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions are met:
-#
-#     * Redistributions of source code must retain the above copyright
-#       notice, this list of conditions and the following disclaimer.
-#     * Redistributions in binary form must reproduce the above copyright
-#       notice, this list of conditions and the following disclaimer in the
-#       documentation and/or other materials provided with the distribution.
-#     * Neither the name of the Fetch Robotics Inc. nor the names of its
-#       contributors may be used to endorse or promote products derived from
-#       this software without specific prior written permission.
-#
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-# ARE DISCLAIMED. IN NO EVENT SHALL FETCH ROBOTICS INC. BE LIABLE FOR ANY
-# DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-# ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
-# THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-# Author: Michael Ferguson
-# Author: Di Sun
-
-import copy
 import os
-import actionlib
+import sys
+import time
+import subprocess
+import signal
+import psutil
+
 import rospy
 import rospkg
-import time
+import actionlib
 
-from math import sin, cos
-from moveit_python import (MoveGroupInterface,
-                           PlanningSceneInterface,
-                           PickPlaceInterface)
-from moveit_python.geometry import rotate_pose_msg_by_euler_angles
+import numpy as np
 
-from control_msgs.msg import FollowJointTrajectoryAction, FollowJointTrajectoryGoal
-from control_msgs.msg import PointHeadAction, PointHeadGoal
-from grasping_msgs.msg import FindGraspableObjectsAction, FindGraspableObjectsGoal
-from geometry_msgs.msg import PoseStamped
-from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
-from moveit_msgs.msg import PlaceLocation, MoveItErrorCodes
+from control_msgs.msg import (FollowJointTrajectoryAction,
+                              FollowJointTrajectoryGoal,
+                              GripperCommandAction,
+                              GripperCommandGoal)
+from gazebo_msgs.srv import SpawnModel, DeleteModel
+from geometry_msgs.msg import PoseStamped, Pose, Point, Quaternion
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 
-from gazebo_msgs.srv import (
-    SpawnModel,
-    DeleteModel,
-)
-
-from geometry_msgs.msg import (
-    PoseStamped,
-    Pose,
-    Point,
-    Quaternion,
-)
-
-
-# Point the head using controller
-class PointHeadClient(object):
-
-    def __init__(self):
-        self.client = actionlib.SimpleActionClient("head_controller/point_head", PointHeadAction)
-        rospy.loginfo("Waiting for head_controller...")
-        self.client.wait_for_server()
-
-    def look_at(self, x, y, z, frame, duration=1.0):
-        goal = PointHeadGoal()
-        goal.target.header.stamp = rospy.Time.now()
-        goal.target.header.frame_id = frame
-        goal.target.point.x = x
-        goal.target.point.y = y
-        goal.target.point.z = z
-        goal.min_duration = rospy.Duration(duration)
-        self.client.send_goal(goal)
-        self.client.wait_for_result()
-
-# Tools for grasping
-class GraspingClient(object):
-
-    def __init__(self):
-        self.scene = PlanningSceneInterface("base_link")
-        self.pickplace = PickPlaceInterface("arm", "gripper", verbose=True)
-        self.move_group = MoveGroupInterface("arm", "base_link")
-
-        find_topic = "basic_grasping_perception/find_objects"
-        rospy.loginfo("Waiting for %s..." % find_topic)
-        self.find_client = actionlib.SimpleActionClient(find_topic, FindGraspableObjectsAction)
-        self.find_client.wait_for_server()
-
-    def updateScene(self):
-        # find objects
-        goal = FindGraspableObjectsGoal()
-        goal.plan_grasps = True
-        self.find_client.send_goal(goal)
-        self.find_client.wait_for_result(rospy.Duration(5.0))
-        find_result = self.find_client.get_result()
-
-        rospy.loginfo("Found %d objects" % len(find_result.objects))
-
-        # remove previous objects
-        for name in self.scene.getKnownCollisionObjects():
-            self.scene.removeCollisionObject(name, False)
-        for name in self.scene.getKnownAttachedObjects():
-            self.scene.removeAttachedObject(name, False)
-        self.scene.waitForSync()
-
-        # insert objects to scene
-        objects = list()
-        idx = -1
-        for obj in find_result.objects:
-            idx += 1
-            obj.object.name = "object%d"%idx
-            self.scene.addSolidPrimitive(obj.object.name,
-                             obj.object.primitives[0],
-                             obj.object.primitive_poses[0])
-            if obj.object.primitive_poses[0].position.x < 0.85:
-                objects.append([obj, obj.object.primitive_poses[0].position.z])
-
-        for obj in find_result.support_surfaces:
-            # extend surface to floor, and make wider since we have narrow field of view
-            height = obj.primitive_poses[0].position.z
-            obj.primitives[0].dimensions = [obj.primitives[0].dimensions[0],
-                                            1.5,  # wider
-                                            obj.primitives[0].dimensions[2] + height]
-            obj.primitive_poses[0].position.z += -height/2.0
-
-            # add to scene
-            self.scene.addSolidPrimitive(obj.name,
-                             obj.primitives[0],
-                             obj.primitive_poses[0])
-        self.scene.waitForSync()
-
-        # store for grasping
-        self.surfaces = find_result.support_surfaces
-
-        # store graspable objects by Z
-        objects.sort(key=lambda object: object[1])
-        objects.reverse()
-        self.objects = [object[0] for object in objects]
-
-    def getGraspableObject(self):
-        graspable = None
-        for obj in self.objects:
-            # need grasps
-            if len(obj.grasps) < 1:
-                continue
-            # check size
-            if obj.object.primitives[0].dimensions[0] < 0.03 or \
-               obj.object.primitives[0].dimensions[0] > 0.25 or \
-               obj.object.primitives[0].dimensions[0] < 0.03 or \
-               obj.object.primitives[0].dimensions[0] > 0.25 or \
-               obj.object.primitives[0].dimensions[0] < 0.03 or \
-               obj.object.primitives[0].dimensions[0] > 0.25:
-                continue
-            # has to be on table
-            if obj.object.primitive_poses[0].position.z < 0.5:
-                continue
-            print("Object Pose: ", obj.object.primitive_poses[0], obj.object.primitives[0])
-            return obj.object, obj.grasps
-        # nothing detected
-        return None, None
-
-    def getSupportSurface(self, name):
-        for surface in self.support_surfaces:
-            if surface.name == name:
-                return surface
-        return None
-
-    def getPlaceLocation(self):
-        pass
-
-    def pick(self, block, grasps):
-        success, pick_result = self.pickplace.pick_with_retry(block.name,
-                                                              grasps,
-                                                              support_name=block.support_surface,
-                                                              scene=self.scene)
-        self.pick_result = pick_result
-        return success
-
-    def place(self, block, pose_stamped):
-        places = list()
-        l = PlaceLocation()
-        l.place_pose.pose = pose_stamped.pose
-        l.place_pose.header.frame_id = pose_stamped.header.frame_id
-
-        # copy the posture, approach and retreat from the grasp used
-        l.post_place_posture = self.pick_result.grasp.pre_grasp_posture
-        l.pre_place_approach = self.pick_result.grasp.pre_grasp_approach
-        l.post_place_retreat = self.pick_result.grasp.post_grasp_retreat
-        places.append(copy.deepcopy(l))
-        # create another several places, rotate each by 360/m degrees in yaw direction
-        m = 16 # number of possible place poses
-        pi = 3.141592653589
-        for i in range(0, m-1):
-            l.place_pose.pose = rotate_pose_msg_by_euler_angles(l.place_pose.pose, 0, 0, 2 * pi / m)
-            places.append(copy.deepcopy(l))
-
-        success, place_result = self.pickplace.place_with_retry(block.name,
-                                                                places,
-                                                                scene=self.scene)
-        return success
-
-    def tuck(self):
-        joints = ["shoulder_pan_joint", "shoulder_lift_joint", "upperarm_roll_joint",
-                  "elbow_flex_joint", "forearm_roll_joint", "wrist_flex_joint", "wrist_roll_joint"]
-        pose = [1.32, 1.40, -0.2, 1.72, 0.0, 1.66, 0.0]
-        while not rospy.is_shutdown():
-            result = self.move_group.moveToJointPosition(joints, pose, 0.02)
-            if result.error_code.val == MoveItErrorCodes.SUCCESS:
-                return
-
-    def stow(self):
-        joints = ["shoulder_pan_joint", "shoulder_lift_joint", "upperarm_roll_joint",
-                  "elbow_flex_joint", "forearm_roll_joint", "wrist_flex_joint", "wrist_roll_joint"]
-        pose = [1.32, 0.7, 0.0, -2.0, 0.0, -0.57, 0.0]
-        #pose = [-1.60, -1.10, -1.20, -1.50, 0.0, -1.51, 0.0]
-        while not rospy.is_shutdown():
-            result = self.move_group.moveToJointPosition(joints, pose, 0.02)
-            if result.error_code.val == MoveItErrorCodes.SUCCESS:
-                return
-
-    def intermediate_stow(self):
-        joints = ["shoulder_pan_joint", "shoulder_lift_joint", "upperarm_roll_joint",
-                  "elbow_flex_joint", "forearm_roll_joint", "wrist_flex_joint", "wrist_roll_joint"]
-        pose = [0.7, -0.3, 0.0, -0.3, 0.0, -0.57, 0.0]
-        while not rospy.is_shutdown():
-            result = self.move_group.moveToJointPosition(joints, pose, 0.02)
-            if result.error_code.val == MoveItErrorCodes.SUCCESS:
-                return
 
 def spawn_gazebo_model(model_path, model_name, model_pose, reference_frame="world"):
   """
@@ -261,89 +47,272 @@ def delete_gazebo_model(models):
   except rospy.ServiceException, e:
     rospy.loginfo("Delete Model service call failed: {0}".format(e))
 
+def move_arm_joints(client, arm_joint_positions, duration=5.0):
+    trajectory = JointTrajectory()
+    trajectory.joint_names = ARM_JOINT_NAMES
+    trajectory.points.append(JointTrajectoryPoint())
+    trajectory.points[0].positions = arm_joint_positions
+    trajectory.points[0].velocities =  [0.0] * len(arm_joint_positions)
+    trajectory.points[0].accelerations = [0.0] * len(arm_joint_positions)
+    trajectory.points[0].time_from_start = rospy.Duration(duration)
+
+    arm_goal = FollowJointTrajectoryGoal()
+    arm_goal.trajectory = trajectory
+    arm_goal.goal_time_tolerance = rospy.Duration(0.0)
+
+    print("Moving amr to joints: ", arm_joint_positions)
+    client.send_goal(arm_goal)
+    client.wait_for_result(rospy.Duration(duration+1.0))
+    rospy.loginfo("...done")
+
+def move_arm_joints_v2(client, arm_joint_positions_list):
+    trajectory = JointTrajectory()
+    trajectory.joint_names = ARM_JOINT_NAMES
+
+    duration = 0.0
+    wait_time = 3.0
+    for i, a_joint_pose in enumerate(arm_joint_positions_list):
+        duration += wait_time
+        trajectory.points.append(JointTrajectoryPoint())
+        trajectory.points[i].positions = a_joint_pose
+        trajectory.points[i].velocities =  [0.0] * len(a_joint_pose)
+        trajectory.points[i].accelerations = [0.0] * len(a_joint_pose)
+        trajectory.points[i].time_from_start = rospy.Duration(duration)
+
+    arm_goal = FollowJointTrajectoryGoal()
+    arm_goal.trajectory = trajectory
+    arm_goal.goal_time_tolerance = rospy.Duration(0.0)
+
+    print("Moving amr to joints: ", arm_joint_positions_list)
+    client.send_goal(arm_goal)
+    client.wait_for_result(rospy.Duration(len(arm_joint_positions_list)*wait_time))
+    rospy.loginfo("...done")
+
+def move_head_joints(client, head_joint_positions):
+    trajectory = JointTrajectory()
+    trajectory.joint_names = HEAD_JOINT_NAMES
+    trajectory.points.append(JointTrajectoryPoint())
+    trajectory.points[0].positions = head_joint_positions
+    trajectory.points[0].velocities = [0.0] * len(head_joint_positions)
+    trajectory.points[0].accelerations = [0.0] * len(head_joint_positions)
+    trajectory.points[0].time_from_start = rospy.Duration(1.0)
+
+    head_goal = FollowJointTrajectoryGoal()
+    head_goal.trajectory = trajectory
+    head_goal.goal_time_tolerance = rospy.Duration(0.0)
+
+    print("Moving head to joints: ", head_joint_positions)
+    client.send_goal(head_goal)
+    client.wait_for_result(rospy.Duration(1.0))
+    rospy.loginfo("...done")
+
+class Gripper(object):
+    """Gripper controls the robot's gripper.
+    """
+    CLOSED_POS = 0.0  # The position for a fully-closed gripper (meters).
+    OPENED_POS = 0.10  # The position for a fully-open gripper (meters).
+    MIN_EFFORT = 35  # Min grasp force, in Newtons
+    MAX_EFFORT = 100  # Max grasp force, in Newtons
+
+    def __init__(self):
+        rospy.loginfo("Waiting for gripper_controller...")
+        self._client = actionlib.SimpleActionClient("gripper_controller/gripper_action", GripperCommandAction)
+        self._client.wait_for_server(rospy.Duration(10))
+        rospy.loginfo("...connected.")
+
+    def open(self):
+        """Opens the gripper.
+        """
+        goal = GripperCommandGoal()
+        goal.command.position = self.OPENED_POS
+        self._client.send_goal_and_wait(goal, rospy.Duration(10))
+
+    def close(self, max_effort=MAX_EFFORT):
+        """Closes the gripper.
+        Args:
+            max_effort: The maximum effort, in Newtons, to use. Note that this
+                should not be less than 35N, or else the gripper may not close.
+        """
+        goal = GripperCommandGoal()
+        goal.command.position = self.CLOSED_POS
+        goal.command.max_effort = max_effort
+        self._client.send_goal_and_wait(goal, rospy.Duration(10))
+
+def start_rosbag_recording(path, filename):
+    # find the directory to save to
+    rospy.loginfo(rospy.get_name() + ' start')
+    rosbagfile_dir = path+os.sep+"rosbagfiles/"
+
+    if not os.path.exists(rosbagfile_dir):
+        os.mkdir(rosbagfile_dir)
+
+    rosbag_process = subprocess.Popen('rosbag record -o {} /joint_states'.format(filename), stdin=subprocess.PIPE, shell=True, cwd=rosbagfile_dir)
+
+    return rosbag_process
+
+def stop_rosbag_recording(p):
+    rospy.loginfo(rospy.get_name() + ' stop recording.')
+    rospy.loginfo(p.pid)
+
+    process = psutil.Process(p.pid)
+    for sub_process in process.children(recursive=True):
+        sub_process.send_signal(signal.SIGINT)
+    p.wait() # we wait for children to terminate
+    #p.terminate()
+
+    rospy.loginfo("I'm done recording")
+    # rostopic echo -b fetch_grasp_model_0_2019-06-26-19-09-34.bag -p /joint_states > data.csv
+    # command = "rostopic echo -b "+source_file+" -p /robot/joint_states > "+target_file+"csv"
+    # os.system(command)
+    #target_file = path+os.sep+os.sep.join(source_file_list[-4:])[:-3]
+    #command = "rostopic echo -b "+source_file+" -p /robot/joint_states > "+target_file+"csv"
+    #os.system(command)
+
+def stop_rosbag_recording_v2(p):
+    rospy.loginfo(rospy.get_name() + ' stop recording.')
+    rospy.loginfo(p.pid)
+
+    s = "/record"
+    list_cmd = subprocess.Popen("rosnode list", shell=True, stdout=subprocess.PIPE)
+    list_output = list_cmd.stdout.read()
+    retcode = list_cmd.wait()
+    assert retcode == 0, "List command returned %d" % retcode
+    for str in list_output.split("\n"):
+        if (str.startswith(s)):
+            os.system("rosnode kill " + str)
+
+    rospy.loginfo("I'm done recording")
+
+def get_clients():
+    ARM_JOINT_NAMES = ["shoulder_pan_joint", "shoulder_lift_joint",
+    "upperarm_roll_joint", "elbow_flex_joint", "forearm_roll_joint",
+    "wrist_flex_joint", "wrist_roll_joint"]
+    rospy.loginfo("Waiting for arm_controller...")
+    arm_client = actionlib.SimpleActionClient("arm_controller/follow_joint_trajectory", FollowJointTrajectoryAction)
+    arm_client.wait_for_server()
+    rospy.loginfo("...connected.")
+
+    HEAD_JOINT_NAMES = ["head_pan_joint", "head_tilt_joint"]
+    rospy.loginfo("Waiting for head_controller...")
+    head_client = actionlib.SimpleActionClient("head_controller/follow_joint_trajectory", FollowJointTrajectoryAction)
+    head_client.wait_for_server()
+    rospy.loginfo("...connected.")
+    head_joint_positions = [0.0, 0.0]
+
+    gripper_client = Gripper()
+
+    return arm_client, head_client, head_joint_positions, gripper_client
 
 if __name__ == "__main__":
+    print("=============start===============")
+    rospy.init_node("simulated_robot_pick_place")
+
+    myargv = rospy.myargv(argv=sys.argv)
+    num_of_run = 1 #int(myargv[1])
+
+    ARM_JOINT_NAMES = ["shoulder_pan_joint", "shoulder_lift_joint",
+    "upperarm_roll_joint", "elbow_flex_joint", "forearm_roll_joint",
+    "wrist_flex_joint", "wrist_roll_joint"]
+    rospy.loginfo("Waiting for arm_controller...")
+    arm_client = actionlib.SimpleActionClient("arm_controller/follow_joint_trajectory", FollowJointTrajectoryAction)
+    arm_client.wait_for_server()
+    rospy.loginfo("...connected.")
+
+    HEAD_JOINT_NAMES = ["head_pan_joint", "head_tilt_joint"]
+    rospy.loginfo("Waiting for head_controller...")
+    head_client = actionlib.SimpleActionClient("head_controller/follow_joint_trajectory", FollowJointTrajectoryAction)
+    head_client.wait_for_server()
+    rospy.loginfo("...connected.")
+    head_joint_positions = [0.0, 0.0]
+    gripper_client = Gripper()
+
     rospack = rospkg.RosPack()
-    pack_path = rospack.get_path('fetch_tufts')
+    PATH = rospack.get_path('fetch_tufts')
 
-    # Create a node
-    rospy.init_node("demo")
+    # 7 to 18+1
+    # model7: table at z -0.08 (Y50)
+    # model8: table at z -0.08 (H202)
+    # model9: table at z -0.08 (Lab3)
+    # model13: table at z -0.095
+    for x in range(7, 7+1):
+        for _ in range(0, num_of_run):
+            print("Picking Block: ", x)
+            filename = str(x-7)
 
-    # Make sure sim time is working
-    while not rospy.Time.now():
-        pass
+            block_path = os.path.join(PATH, 'models', 'block', 'model'+str(x)+'.urdf')
+            block_name = 'block'+str(x)
+            #block_pose = Pose(position=Point(x=0.57, y=-0.07, z=0.7))
+            block_pose = Pose(position=Point(x=0.57, y=-0.05, z=0.7))
+            delete_gazebo_model([block_name])
+            time.sleep(1.0)
+            spawn_gazebo_model(block_path, block_name, block_pose)
 
+            robot_path = os.path.join(PATH, 'robots', 'fetch_gazebo.urdf')
+            robot_name = 'fetch'
+            robot_pose = Pose(position=Point(x=0.0, y=0.0, z=0.01))
+            delete_gazebo_model([robot_name])
+            time.sleep(2.0)
+            spawn_gazebo_model(robot_path, robot_name, robot_pose)
+            arm_client, head_client, head_joint_positions, gripper_client = get_clients()
+            time.sleep(2.0)
+            move_head_joints(head_client, head_joint_positions)
 
-    # Setup clients
-    head_action = PointHeadClient()
-    grasping_client = GraspingClient() # Control scene, robot, arm
-    grasping_client.stow() # Go to a default pose
-    cube_in_grapper = False
+            arm_joint_positions = [0.0, -1.22, 0.0, 1.20, 0.0, 1.6, 0.0] # Above Pick
+            move_arm_joints(arm_client, arm_joint_positions, 3.0)
+            gripper_client.open()
 
-    object_no = 4
-    for b in range(0, object_no):
-        object_path = os.path.join(pack_path, 'models', 'block', 'model'+str(b)+'.urdf')
-        object_name = 'object'+str(b)
-        object_pose = Pose(position=Point(x=0.6, y=0.08+b*0.1, z=0.75))
-        spawn_gazebo_model(object_path, object_name, object_pose)
-        time.sleep(1.0)
+            fn_grasp = "fetch_grasp_model_" + filename
+            rps = start_rosbag_recording(PATH, fn_grasp)
+            arm_joint_positions  = [0.0, -1.20, 0.0, 1.45, 0.0, 1.3, 0.0] # Pick Pose
+            move_arm_joints(arm_client, arm_joint_positions, 3.0)
+            gripper_client.close()
+            # stop_rosbag_recording(rps)
+            stop_rosbag_recording_v2(rps)
 
-    while not rospy.is_shutdown():
-        head_action.look_at(1.2, 0.0, 0.0, "base_link")
+            fn_pick = "fetch_pick_model_" + filename
+            rps = start_rosbag_recording(PATH, fn_pick)
+            #arm_joint_positions = [0.0, -1.22, 0.4, 1.20, 0.0, 1.4, 0.0] # Above place
+            #arm_joint_positions = [0.0, -1.0, 0.4, 1.0, 0.0, 1.6, 0.0] # Above place
+            arm_joint_positions = [0.0, np.random.uniform(-1.22, -1.0), 0.4, np.random.uniform(1.0, 1.20), 0.0, np.random.uniform(1.4, 1.6), 0.0]
+            move_arm_joints(arm_client, arm_joint_positions, 3.0)
+            # stop_rosbag_recording(rps)
+            stop_rosbag_recording_v2(rps)
 
-        # Get block to pick
-        fail_ct = 0
-        while not rospy.is_shutdown() and not cube_in_grapper:
-            rospy.loginfo("Picking object...")
+            #"""
+            fn_hold = "fetch_hold_model_" + filename
+            rps = start_rosbag_recording(PATH, fn_hold)
+            time.sleep(2.0)
+            # stop_rosbag_recording(rps)
+            stop_rosbag_recording_v2(rps)
 
-            grasping_client.updateScene() # Add table and block in scene using perception -> let just hard coding
+            fn_shake = "fetch_shake_model_" + filename
+            rps = start_rosbag_recording(PATH, fn_shake)
+            # arm_joint_positions_list = [
+            # [0.90, -1.0, 0.4, 1.0, 0.0, 1.6, 0.0],
+            # [0.90, -1.1, 0.4, 1.1, 0.0, 2.0, 0.0],
+            # [0.90, -1.2, 0.5, 1.2, 0.0, 1.0, 0.0],
+            # [0.90, -1.1, 0.4, 1.1, 0.0, 2.0, 0.0]
+            # ]
+            arm_joint_positions_list = [
+            [0.90, -1.0, 0.4, 1.0, 0.0, 1.6, 0.0],
+            [0.90, np.random.uniform(-1.0, -1.1), 0.4, np.random.uniform(1.0, 1.1), 0.0, np.random.uniform(1.9, 2.0), 0.0],
+            [0.90, np.random.uniform(-1.1, -1.2), np.random.uniform(0.4, 0.5), np.random.uniform(1.0, 1.2), 0.0, np.random.uniform(0.9, 1.0), 0.0],
+            [0.90, np.random.uniform(-1.0, -1.1), 0.4, np.random.uniform(1.0, 1.1), 0.0, np.random.uniform(1.9, 2.0), 0.0],
+            [0.90, np.random.uniform(-1.1, -1.2), np.random.uniform(0.4, 0.5), np.random.uniform(1.0, 1.2), 0.0, np.random.uniform(0.9, 1.0), 0.0],
+            ]
+            move_arm_joints_v2(arm_client, arm_joint_positions_list)
+            # stop_rosbag_recording(rps)
+            stop_rosbag_recording_v2(rps)
+            #"""
 
-            cube, grasps = grasping_client.getGraspableObject()
+            fn_place = "fetch_place_model_" + filename
+            rps = start_rosbag_recording(PATH, fn_place)
+            #arm_joint_positions = [0.0, -1.20, 0.4, 1.45, 0.0, 1.2, 0.0] # Place pose
+            arm_joint_positions = [0.0, -1.10, 0.4, 1.3, 0.0, 1.2, 0.0] # Place pose
+            #arm_joint_positions = [0.0, np.random.uniform(-1.20, -1.10), 0.4, np.random.uniform(1.3, 1.45), 0.0, 1.2, 0.0]
+            move_arm_joints(arm_client, arm_joint_positions, 3.0)
+            gripper_client.open()
+            # stop_rosbag_recording(rps)
+            stop_rosbag_recording_v2(rps)
 
-            if cube == None:
-                rospy.logwarn("Perception failed.")
-                # grasping_client.intermediate_stow()
-                grasping_client.stow()
-                head_action.look_at(1.2, 0.0, 0.0, "base_link")
-                continue
-
-            # Pick the block
-            # pick_with_retry: http://docs.ros.org/jade/api/moveit_python/html/pick__place__interface_8py_source.html
-            if grasping_client.pick(cube, grasps):
-                cube_in_grapper = True
-                break
-            print("Pick Success")
-            rospy.logwarn("Grasping failed.")
-            grasping_client.stow()
-            if fail_ct > 15:
-                fail_ct = 0
-                break
-            fail_ct += 1
-
-        # Tuck the arm
-        #grasping_client.tuck()
-
-        # Place the block
-        while not rospy.is_shutdown() and cube_in_grapper:
-            rospy.loginfo("Placing object...")
-            pose = PoseStamped()
-            pose.pose = cube.primitive_poses[0]
-            #pose.pose.position.y *= -1.0
-            #pose.pose.position.y = 0.10
-            pose.pose.position.z += 0.02
-            pose.header.frame_id = cube.header.frame_id
-            if grasping_client.place(cube, pose):
-                cube_in_grapper = False
-                break
-            rospy.logwarn("Placing failed.")
-            grasping_client.intermediate_stow()
-            grasping_client.stow()
-            if fail_ct > 15:
-                fail_ct = 0
-                break
-            fail_ct += 1
-        # Tuck the arm, lower the torso
-        grasping_client.intermediate_stow()
-        grasping_client.stow()
-        rospy.loginfo("Finished")
-        #torso_action.move_to([0.0, ])
+            #delete_gazebo_model([block_name, robot_name])
