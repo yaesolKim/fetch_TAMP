@@ -1,0 +1,8 @@
+general-message-pkgs/object_msgs_tools
+/home/glab/fetch_TAMP/devel/.private/object_msgs_tools/cmake.lock /home/glab/fetch_TAMP/devel/./cmake.lock
+/home/glab/fetch_TAMP/devel/.private/object_msgs_tools/share/object_msgs_tools/cmake/object_msgs_toolsConfig-version.cmake /home/glab/fetch_TAMP/devel/share/object_msgs_tools/cmake/object_msgs_toolsConfig-version.cmake
+/home/glab/fetch_TAMP/devel/.private/object_msgs_tools/share/object_msgs_tools/cmake/object_msgs_toolsConfig.cmake /home/glab/fetch_TAMP/devel/share/object_msgs_tools/cmake/object_msgs_toolsConfig.cmake
+/home/glab/fetch_TAMP/devel/.private/object_msgs_tools/lib/libobject_msgs_tools.so /home/glab/fetch_TAMP/devel/lib/libobject_msgs_tools.so
+/home/glab/fetch_TAMP/devel/.private/object_msgs_tools/lib/object_msgs_tools/register_object_client /home/glab/fetch_TAMP/devel/lib/object_msgs_tools/register_object_client
+/home/glab/fetch_TAMP/devel/.private/object_msgs_tools/lib/object_msgs_tools/object_tf_broadcaster_node /home/glab/fetch_TAMP/devel/lib/object_msgs_tools/object_tf_broadcaster_node
+/home/glab/fetch_TAMP/devel/.private/object_msgs_tools/lib/pkgconfig/object_msgs_tools.pc /home/glab/fetch_TAMP/devel/lib/pkgconfig/object_msgs_tools.pc

@@ -1,0 +1,1 @@
+/home/glab/fetch_TAMP/devel/.private/fetch_tamp/lib/pkgconfig/fetch_tamp.pc

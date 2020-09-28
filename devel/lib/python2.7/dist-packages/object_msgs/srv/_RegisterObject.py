@@ -1,0 +1,1 @@
+/home/glab/fetch_TAMP/devel/.private/object_msgs/lib/python2.7/dist-packages/object_msgs/srv/_RegisterObject.py

@@ -1,0 +1,4 @@
+Symlinking /home/glab/fetch_TAMP/devel/share/gazebo_world_plugin_loader/cmake/gazebo_world_plugin_loaderConfig.cmake
+Symlinking /home/glab/fetch_TAMP/devel/share/gazebo_world_plugin_loader/cmake/gazebo_world_plugin_loaderConfig-version.cmake
+Symlinking /home/glab/fetch_TAMP/devel/lib/libgazebo_world_plugin_loader.so
+Symlinking /home/glab/fetch_TAMP/devel/lib/pkgconfig/gazebo_world_plugin_loader.pc

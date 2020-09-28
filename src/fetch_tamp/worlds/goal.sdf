@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>model://coffeetable</uri>
+      <name>table</name>
+	  <pose>2.08 0 0  1.5708 0 0</pose>      
+    </include>
+    <include>
+      <uri>model://bookshelf</uri>
+      <name>bookshelf</name>
+	  <pose>2.314 -1.6 0 1.5708 0 0</pose>    
+    </include>
+    <include>
+      <uri>model://cracker</uri>
+      <name>cracker</name>
+	  <pose>2.314 -0.858 0.65 1.5708 0 0</pose>     
+    </include>
+    <include>
+      <uri>model://apple</uri> 
+      <name>apple</name>
+	  <pose>1.82 -0.793 0.65 0 0 0</pose>     
+    </include>
+    <include>
+      <uri>model://mustard</uri> 
+      <name>mustard</name>
+	  <pose>2.314 -0.598 0.7 0 0 1.5708</pose>     
+    </include>
+    <include>
+      <uri>model://potted_meat</uri> 
+      <name>spam1</name>
+	  <pose>2.21 0.182 0.65 0 0 1.5708</pose>     
+    </include>
+    <include>
+      <uri>model://potted_meat</uri> 
+      <name>spam2</name>
+	  <pose>2.21 0.377 0.65 0 0 1.5708</pose>     
+    </include>
+    <include>
+      <uri>model://tomatosoup</uri> 
+      <name>tomato1</name>
+	  <pose>2.21 0.572 0.65 1.5708 0 1.5708</pose>     
+    </include>
+    <include>
+      <uri>model://tomatosoup</uri> 
+      <name>tomato2</name>
+	  <pose>2.21 0.702 0.65 1.5708 0 1.5708</pose>     
+    </include>
+  </world>
+</sdf>

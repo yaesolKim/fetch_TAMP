@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/glab/fetch_TAMP/devel/.private/gazebo_grasp_plugin/setup.sh

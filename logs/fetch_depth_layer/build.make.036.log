@@ -1,4 +1,0 @@
-[35m[1mScanning dependencies of target fetch_depth_layer[0m
-[ 50%] [32mBuilding CXX object CMakeFiles/fetch_depth_layer.dir/src/depth_layer.cpp.o[0m
-[100%] [32m[1mLinking CXX shared library /home/glab/fetch_TAMP/devel/.private/fetch_depth_layer/lib/libfetch_depth_layer.so[0m
-[100%] Built target fetch_depth_layer

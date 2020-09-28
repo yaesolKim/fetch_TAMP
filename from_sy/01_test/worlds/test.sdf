@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <model name="coffeetable">
+      <pose>2.6 0 0  1.5708 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh>
+				<uri>model://coffeetable/meshes/coffeetable.obj</uri>
+				<scale>1.3 1.3 1.3</scale>
+            </mesh>
+          </geometry>
+        </visual>
+    	<collision name="collision">
+          <geometry>
+            <mesh>
+				<uri>model://coffeetable/meshes/coffeetable.obj</uri>
+				<scale>1.3 1.3 1.3</scale>
+            </mesh>
+          </geometry>
+		</collision>
+      </link>
+    </model>
+    <model name="bookshelf">
+      <pose>2.8327 -1.586 0  1.5708 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh>
+				<uri>model://bookshelf/meshes/bookshelf.obj</uri>
+				<scale>1.3 1.3 1.3</scale>
+            </mesh>
+          </geometry>
+        </visual>
+    	<collision name="collision">
+          <geometry>
+            <mesh>
+				<uri>model://bookshelf/meshes/bookshelf.obj</uri>
+				<scale>1.3 1.3 1.3</scale>
+            </mesh>
+          </geometry>
+		</collision>
+      </link>
+    </model>
+    <model name="cracker1">
+      <pose>2.6 0 1  0 0 3.14159</pose>
+      <static>0</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh>
+				<uri>model://cracker/meshes/cracker.dae</uri>
+				<scale>0.15 0.15 0.15</scale>
+            </mesh>
+          </geometry>
+        </visual>
+    	<collision name="collision">
+          <geometry>
+            <mesh>
+				<uri>model://cracker/meshes/cracker.dae</uri>
+				<scale>0.15 0.15 0.15</scale>
+            </mesh>
+          </geometry>
+		</collision>
+        <inertial>
+          <mass>0.411</mass>
+          <inertia>
+            <ixx>0.002365</ixx>
+            <ixy>0.000000</ixy>
+            <ixz>0.000000</ixz>
+            <iyy>0.001634</iyy>
+            <iyz>0.000000</iyz>
+            <izz>0.000978</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+    <model name="sugar_box1">
+      <pose>2.6 0.39 1  1.5708 0 0</pose>
+      <static>0</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh>
+				<uri>model://sugarbox/meshes/sugar.obj</uri>
+				<scale>0.15 0.15 0.15</scale>
+            </mesh>
+          </geometry>
+        </visual>
+    	<collision name="collision">
+          <geometry>
+            <mesh>
+				<uri>model://sugarbox/meshes/sugar.obj</uri>
+				<scale>0.15 0.15 0.15</scale>
+            </mesh>
+          </geometry>
+		</collision>
+      </link>
+    </model>
+    <model name="sugar_box2">
+      <pose>2.8 -0.3 0.9  1.5708 0 0.987</pose>
+      <static>0</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh>
+				<uri>model://sugarbox/meshes/sugar.obj</uri>
+				<scale>0.15 0.15 0.15</scale>
+            </mesh>
+          </geometry>
+        </visual>
+    	<collision name="collision">
+          <geometry>
+            <mesh>
+				<uri>model://sugarbox/meshes/sugar.obj</uri>
+				<scale>0.15 0.15 0.15</scale>
+            </mesh>
+          </geometry>
+		</collision>
+      </link>
+    </model>
+    <model name="apple">
+      <pose>2.5 -0.3 1  1.5708 0.98347 0.987</pose>
+      <static>0</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh>
+				<uri>model://apple/meshes/apple.obj</uri>
+				<scale>0.15 0.15 0.15</scale>
+            </mesh>
+          </geometry>
+        </visual>
+    	<collision name="collision">
+          <geometry>
+            <mesh>
+				<uri>model://apple/meshes/apple.obj</uri>
+				<scale>0.15 0.15 0.15</scale>
+            </mesh>
+          </geometry>
+		</collision>
+      </link>
+    </model>
+  </world>
+</sdf>
