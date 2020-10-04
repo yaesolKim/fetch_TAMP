@@ -255,7 +255,7 @@ if __name__ == "__main__":
     init_pose = [Pose(position=Point(x=0.8, y=-0.3, z=0.5)),
                 Pose(position=Point(x=0.8, y=-0.2,  z=0.5)),
                 Pose(position=Point(x=0.8, y=-0.1,  z=0.5)),
-                Pose(position=Point(x=0.8, y=-0.,   z=0.5)),
+                Pose(position=Point(x=0.8, y=-0,    z=0.5)),
                 Pose(position=Point(x=0.8, y=0.1,   z=0.5)),
                 Pose(position=Point(x=0.8, y=0.2,   z=0.5)),
                 Pose(position=Point(x=0.8, y=0.3,   z=0.5))]
