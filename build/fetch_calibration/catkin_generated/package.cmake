@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "fetch_calibration")
-set(fetch_calibration_VERSION "0.8.0")
-set(fetch_calibration_MAINTAINER "Russell Toris <rtoris@fetchrobotics.com>, Alex Moriarty <amoriarty@fetchrobotics.com>")
+set(fetch_calibration_VERSION "0.8.2")
+set(fetch_calibration_MAINTAINER "Niharika Arora <narora@fetchrobotics.com>, Eric Relson <erelson@fetchrobotics.com>, Carl Saldanha <csaldanha@fetchrobotics.com>, Sarah Elliott <selliott@fetchrobotics.com>, Russell Toris <rtoris@fetchrobotics.com>, Fetch Robotics Open Source Team <opensource@fetchrobotics.com>")
 set(fetch_calibration_PACKAGE_FORMAT "2")
 set(fetch_calibration_BUILD_DEPENDS )
 set(fetch_calibration_BUILD_EXPORT_DEPENDS )

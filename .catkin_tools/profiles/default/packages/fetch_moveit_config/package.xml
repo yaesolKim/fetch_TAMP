@@ -2,14 +2,17 @@
 <package format="2">
 
   <name>fetch_moveit_config</name>
-  <version>0.8.0</version>
+  <version>0.8.2</version>
   <description>
      An automatically generated package with all the configuration and launch files for using the fetch_urdf with the MoveIt Motion Planning Framework
   </description>
   <author email="assistant@moveit.ros.org">MoveIt Setup Assistant</author>
 
+  <maintainer email="selliott@fetchrobotics.com">Sarah Elliott</maintainer>
+  <maintainer email="csaldanha@fetchrobotics.com">Carl Saldanha</maintainer>
+  <maintainer email="erelson@fetchrobotics.com">Eric Relson</maintainer>
   <maintainer email="rtoris@fetchrobotics.com">Russell Toris</maintainer>
-  <maintainer email="amoriarty@fetchrobotics.com">Alex Moriarty</maintainer>
+  <maintainer email="opensource@fetchrobotics.com">Fetch Robotics Open Source Team</maintainer>
 
   <license>BSD</license>
   <url type="wiki">http://ros.org/wiki/fetch_moveit_config</url>

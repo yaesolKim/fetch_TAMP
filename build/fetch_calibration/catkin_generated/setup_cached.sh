@@ -9,6 +9,8 @@
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/glab/fetch_TAMP/devel/.private/fetch_calibration:$CMAKE_PREFIX_PATH"
 export LD_LIBRARY_PATH="/home/glab/fetch_TAMP/devel/.private/fetch_calibration/lib:$LD_LIBRARY_PATH"
+export PATH="/home/glab/fetch_TAMP/devel/.private/fetch_calibration/bin:$PATH"
+export PKG_CONFIG_PATH="/home/glab/fetch_TAMP/devel/.private/fetch_calibration/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/glab/fetch_TAMP/build/fetch_calibration'
 export PYTHONPATH="/home/glab/fetch_TAMP/devel/.private/fetch_calibration/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/glab/fetch_TAMP/devel/.private/fetch_calibration/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"

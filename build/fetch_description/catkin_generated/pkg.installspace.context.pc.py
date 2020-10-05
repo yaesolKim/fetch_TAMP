@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "fetch_description"
 PROJECT_SPACE_DIR = "/home/glab/fetch_TAMP/install"
-PROJECT_VERSION = "0.8.0"
+PROJECT_VERSION = "0.8.2"

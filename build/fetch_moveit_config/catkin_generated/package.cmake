@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "fetch_moveit_config")
-set(fetch_moveit_config_VERSION "0.8.0")
-set(fetch_moveit_config_MAINTAINER "Russell Toris <rtoris@fetchrobotics.com>, Alex Moriarty <amoriarty@fetchrobotics.com>")
+set(fetch_moveit_config_VERSION "0.8.2")
+set(fetch_moveit_config_MAINTAINER "Sarah Elliott <selliott@fetchrobotics.com>, Carl Saldanha <csaldanha@fetchrobotics.com>, Eric Relson <erelson@fetchrobotics.com>, Russell Toris <rtoris@fetchrobotics.com>, Fetch Robotics Open Source Team <opensource@fetchrobotics.com>")
 set(fetch_moveit_config_PACKAGE_FORMAT "2")
 set(fetch_moveit_config_BUILD_DEPENDS "fetch_description")
 set(fetch_moveit_config_BUILD_EXPORT_DEPENDS "fetch_description")

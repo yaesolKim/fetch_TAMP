@@ -27,7 +27,7 @@ opencv2/rgbd.hpp
 -
 
 /home/glab/fetch_TAMP/src/fetch_ros/fetch_depth_layer/src/depth_layer.cpp
-pluginlib/class_list_macros.h
+pluginlib/class_list_macros.hpp
 -
 fetch_depth_layer/depth_layer.h
 -
@@ -1042,13 +1042,9 @@ std_msgs/Header.h
 nav_msgs/MapMetaData.h
 -
 
-/opt/ros/melodic/include/pluginlib/./class_list_macros.hpp
+/opt/ros/melodic/include/pluginlib/class_list_macros.hpp
 class_loader/class_loader.hpp
 -
-
-/opt/ros/melodic/include/pluginlib/class_list_macros.h
-./class_list_macros.hpp
-/opt/ros/melodic/include/pluginlib/./class_list_macros.hpp
 
 /opt/ros/melodic/include/ros/advertise_options.h
 ros/forwards.h

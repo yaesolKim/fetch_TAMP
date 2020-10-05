@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "fetch_maps")
-set(fetch_maps_VERSION "0.8.0")
-set(fetch_maps_MAINTAINER "Russell Toris <rtoris@fetchrobotics.com>, Alex Moriarty <amoriarty@fetchrobotics.com>")
+set(fetch_maps_VERSION "0.8.2")
+set(fetch_maps_MAINTAINER "Sarah Elliott <selliott@fetchrobotics.com>, Niharika Arora <narora@fetchrobotics.com>, Carl Saldanha <csaldanha@fetchrobotics.com>, Eric Relson <erelson@fetchrobotics.com>, Russell Toris <rtoris@fetchrobotics.com>, Fetch Robotics Open Source Team <opensource@fetchrobotics.com>")
 set(fetch_maps_PACKAGE_FORMAT "2")
 set(fetch_maps_BUILD_DEPENDS )
 set(fetch_maps_BUILD_EXPORT_DEPENDS )

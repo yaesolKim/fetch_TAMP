@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "fetch_depth_layer")
-set(fetch_depth_layer_VERSION "0.8.0")
-set(fetch_depth_layer_MAINTAINER "Russell Toris <rtoris@fetchrobotics.com>, Alex Moriarty <amoriarty@fetchrobotics.com>")
+set(fetch_depth_layer_VERSION "0.8.2")
+set(fetch_depth_layer_MAINTAINER "Carl Saldanha <csaldanha@fetchrobotics.com>, Eric Relson <erelson@fetchrobotics.com>, Niharika Arora <narora@fetchrobotics.com>, Sarah Elliott <selliott@fetchrobotics.com>, Russell Toris <rtoris@fetchrobotics.com>, Fetch Robotics Open Source Team <opensource@fetchrobotics.com>")
 set(fetch_depth_layer_PACKAGE_FORMAT "2")
 set(fetch_depth_layer_BUILD_DEPENDS "costmap_2d" "cv_bridge" "geometry_msgs" "image_transport" "nav_msgs" "pluginlib" "roscpp" "sensor_msgs" "tf2_ros")
 set(fetch_depth_layer_BUILD_EXPORT_DEPENDS "costmap_2d" "cv_bridge" "geometry_msgs" "image_transport" "nav_msgs" "pluginlib" "roscpp" "sensor_msgs" "tf2_ros")

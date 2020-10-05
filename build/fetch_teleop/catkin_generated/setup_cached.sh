@@ -8,6 +8,8 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/glab/fetch_TAMP/devel/.private/fetch_teleop:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/home/glab/fetch_TAMP/devel/.private/fetch_teleop/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/glab/fetch_TAMP/devel/.private/fetch_teleop/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/glab/fetch_TAMP/build/fetch_teleop'
 export ROSLISP_PACKAGE_DIRECTORIES="/home/glab/fetch_TAMP/devel/.private/fetch_teleop/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/glab/fetch_TAMP/src/fetch_ros/fetch_teleop:$ROS_PACKAGE_PATH"

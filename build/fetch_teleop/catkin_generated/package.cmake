@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "fetch_teleop")
-set(fetch_teleop_VERSION "0.8.0")
-set(fetch_teleop_MAINTAINER "Russell Toris <rtoris@fetchrobotics.com>, Alex Moriarty <amoriarty@fetchrobotics.com>")
+set(fetch_teleop_VERSION "0.8.2")
+set(fetch_teleop_MAINTAINER "Carl Saldanha <csaldanha@fetchrobotics.com>, Niharika Arora <narora@fetchrobotics.com>, Eric Relson <erelson@fetchrobotics.com>, Sarah Elliott <selliott@fetchrobotics.com>, Russell Toris <rtoris@fetchrobotics.com>, Fetch Robotics Open Source Team <opensource@fetchrobotics.com>")
 set(fetch_teleop_PACKAGE_FORMAT "2")
 set(fetch_teleop_BUILD_DEPENDS "actionlib" "control_msgs" "geometry_msgs" "nav_msgs" "roscpp" "sensor_msgs" "topic_tools")
 set(fetch_teleop_BUILD_EXPORT_DEPENDS "actionlib" "control_msgs" "geometry_msgs" "nav_msgs" "roscpp" "sensor_msgs" "topic_tools")

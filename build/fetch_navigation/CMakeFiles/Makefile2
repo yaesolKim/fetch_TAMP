@@ -287,8 +287,8 @@ clean: CMakeFiles/_run_tests_fetch_navigation.dir/clean
 # Target rules for target CMakeFiles/_run_tests_fetch_navigation_roslaunch-check_launch_fetch_nav.launch.dir
 
 # All Build rule for target.
-CMakeFiles/_run_tests_fetch_navigation_roslaunch-check_launch_fetch_nav.launch.dir/all: CMakeFiles/clean_test_results_fetch_navigation.dir/all
 CMakeFiles/_run_tests_fetch_navigation_roslaunch-check_launch_fetch_nav.launch.dir/all: CMakeFiles/tests.dir/all
+CMakeFiles/_run_tests_fetch_navigation_roslaunch-check_launch_fetch_nav.launch.dir/all: CMakeFiles/clean_test_results_fetch_navigation.dir/all
 	$(MAKE) -f CMakeFiles/_run_tests_fetch_navigation_roslaunch-check_launch_fetch_nav.launch.dir/build.make CMakeFiles/_run_tests_fetch_navigation_roslaunch-check_launch_fetch_nav.launch.dir/depend
 	$(MAKE) -f CMakeFiles/_run_tests_fetch_navigation_roslaunch-check_launch_fetch_nav.launch.dir/build.make CMakeFiles/_run_tests_fetch_navigation_roslaunch-check_launch_fetch_nav.launch.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/glab/fetch_TAMP/build/fetch_navigation/CMakeFiles --progress-num= "Built target _run_tests_fetch_navigation_roslaunch-check_launch_fetch_nav.launch"
@@ -449,8 +449,8 @@ clean: CMakeFiles/run_tests_fetch_navigation_roslaunch-check.dir/clean
 # Target rules for target CMakeFiles/_run_tests_fetch_navigation_roslaunch-check.dir
 
 # All Build rule for target.
-CMakeFiles/_run_tests_fetch_navigation_roslaunch-check.dir/all: CMakeFiles/_run_tests_fetch_navigation_roslaunch-check_launch_freight_nav.launch.dir/all
 CMakeFiles/_run_tests_fetch_navigation_roslaunch-check.dir/all: CMakeFiles/_run_tests_fetch_navigation_roslaunch-check_launch_fetch_nav.launch.dir/all
+CMakeFiles/_run_tests_fetch_navigation_roslaunch-check.dir/all: CMakeFiles/_run_tests_fetch_navigation_roslaunch-check_launch_freight_nav.launch.dir/all
 	$(MAKE) -f CMakeFiles/_run_tests_fetch_navigation_roslaunch-check.dir/build.make CMakeFiles/_run_tests_fetch_navigation_roslaunch-check.dir/depend
 	$(MAKE) -f CMakeFiles/_run_tests_fetch_navigation_roslaunch-check.dir/build.make CMakeFiles/_run_tests_fetch_navigation_roslaunch-check.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/glab/fetch_TAMP/build/fetch_navigation/CMakeFiles --progress-num= "Built target _run_tests_fetch_navigation_roslaunch-check"
@@ -514,8 +514,8 @@ clean: CMakeFiles/clean_test_results_fetch_navigation.dir/clean
 # Target rules for target CMakeFiles/_run_tests_fetch_navigation_roslaunch-check_launch_freight_nav.launch.dir
 
 # All Build rule for target.
-CMakeFiles/_run_tests_fetch_navigation_roslaunch-check_launch_freight_nav.launch.dir/all: CMakeFiles/clean_test_results_fetch_navigation.dir/all
 CMakeFiles/_run_tests_fetch_navigation_roslaunch-check_launch_freight_nav.launch.dir/all: CMakeFiles/tests.dir/all
+CMakeFiles/_run_tests_fetch_navigation_roslaunch-check_launch_freight_nav.launch.dir/all: CMakeFiles/clean_test_results_fetch_navigation.dir/all
 	$(MAKE) -f CMakeFiles/_run_tests_fetch_navigation_roslaunch-check_launch_freight_nav.launch.dir/build.make CMakeFiles/_run_tests_fetch_navigation_roslaunch-check_launch_freight_nav.launch.dir/depend
 	$(MAKE) -f CMakeFiles/_run_tests_fetch_navigation_roslaunch-check_launch_freight_nav.launch.dir/build.make CMakeFiles/_run_tests_fetch_navigation_roslaunch-check_launch_freight_nav.launch.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/glab/fetch_TAMP/build/fetch_navigation/CMakeFiles --progress-num= "Built target _run_tests_fetch_navigation_roslaunch-check_launch_freight_nav.launch"

@@ -2,7 +2,7 @@ prefix=/home/glab/fetch_TAMP/devel/.private/fetch_ikfast_plugin
 
 Name: fetch_ikfast_plugin
 Description: Description of fetch_ikfast_plugin
-Version: 0.8.0
+Version: 0.8.2
 Cflags: 
 Libs: -L${prefix}/lib 
-Requires: moveit_core pluginlib roscpp tf_conversions
+Requires: 

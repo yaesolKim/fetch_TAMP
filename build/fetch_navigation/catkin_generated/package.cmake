@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "fetch_navigation")
-set(fetch_navigation_VERSION "0.8.0")
-set(fetch_navigation_MAINTAINER "Russell Toris <rtoris@fetchrobotics.com>, Alex Moriarty <amoriarty@fetchrobotics.com>")
+set(fetch_navigation_VERSION "0.8.2")
+set(fetch_navigation_MAINTAINER "Niharika Arora <narora@fetchrobotics.com>, Carl Saldanha <csaldanha@fetchrobotics.com>, Eric Relson <erelson@fetchrobotics.com>, Sarah Elliott <selliott@fetchrobotics.com>, Russell Toris <rtoris@fetchrobotics.com>, Fetch Robotics Open Source Team <opensource@fetchrobotics.com>")
 set(fetch_navigation_PACKAGE_FORMAT "2")
 set(fetch_navigation_BUILD_DEPENDS )
 set(fetch_navigation_BUILD_EXPORT_DEPENDS )

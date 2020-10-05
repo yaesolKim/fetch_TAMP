@@ -1,5 +1,5 @@
 set(fetch_calibration_SETUP_PY_SETUP_MODULE "distutils.core")
-set(fetch_calibration_SETUP_PY_VERSION "0.8.0")
+set(fetch_calibration_SETUP_PY_VERSION "0.8.2")
 set(fetch_calibration_SETUP_PY_SCRIPTS "scripts/calibrate_robot")
 set(fetch_calibration_SETUP_PY_PACKAGES "")
 set(fetch_calibration_SETUP_PY_PACKAGE_DIRS "")

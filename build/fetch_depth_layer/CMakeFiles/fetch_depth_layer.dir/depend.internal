@@ -71,8 +71,7 @@ CMakeFiles/fetch_depth_layer.dir/src/depth_layer.cpp.o
  /opt/ros/melodic/include/message_filters/subscriber.h
  /opt/ros/melodic/include/nav_msgs/MapMetaData.h
  /opt/ros/melodic/include/nav_msgs/OccupancyGrid.h
- /opt/ros/melodic/include/pluginlib/./class_list_macros.hpp
- /opt/ros/melodic/include/pluginlib/class_list_macros.h
+ /opt/ros/melodic/include/pluginlib/class_list_macros.hpp
  /opt/ros/melodic/include/ros/advertise_options.h
  /opt/ros/melodic/include/ros/advertise_service_options.h
  /opt/ros/melodic/include/ros/assert.h

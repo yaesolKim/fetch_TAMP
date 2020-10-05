@@ -99,7 +99,7 @@ if(NOT "/home/glab/fetch_TAMP/src/fetch_ros/fetch_depth_layer/include;/usr/inclu
   elseif(NOT "http://docs.fetchrobotics.com/perception.html " STREQUAL " ")
     set(_report "Check the website 'http://docs.fetchrobotics.com/perception.html' for information and consider reporting the problem.")
   else()
-    set(_report "Report the problem to the maintainer 'Russell Toris <rtoris@fetchrobotics.com>, Alex Moriarty <amoriarty@fetchrobotics.com>' and request to fix the problem.")
+    set(_report "Report the problem to the maintainer 'Carl Saldanha <csaldanha@fetchrobotics.com>, Eric Relson <erelson@fetchrobotics.com>, Niharika Arora <narora@fetchrobotics.com>, Sarah Elliott <selliott@fetchrobotics.com>, Russell Toris <rtoris@fetchrobotics.com>, Fetch Robotics Open Source Team <opensource@fetchrobotics.com>' and request to fix the problem.")
   endif()
   foreach(idir ${_include_dirs})
     if(IS_ABSOLUTE ${idir} AND IS_DIRECTORY ${idir})

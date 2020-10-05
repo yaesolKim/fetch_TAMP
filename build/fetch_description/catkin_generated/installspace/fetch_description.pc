@@ -2,7 +2,7 @@ prefix=/home/glab/fetch_TAMP/install
 
 Name: fetch_description
 Description: Description of fetch_description
-Version: 0.8.0
+Version: 0.8.2
 Cflags: 
 Libs: -L${prefix}/lib 
 Requires: 
