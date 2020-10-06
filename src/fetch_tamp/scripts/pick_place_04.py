@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-#use 4 models
 import sys
 import copy
 import os
@@ -167,6 +166,9 @@ class GraspingClient(object):
         places = list()
         l = PlaceLocation()
         l.place_pose.pose = pose_stamped.pose
+        #l.place_pose.pose.position.x = 0.6
+        #l.place_pose.pose.position.y= -0.15
+        #l.place_pose.pose.position.z= 0.65
         l.place_pose.header.frame_id = pose_stamped.header.frame_id
 
         # copy the posture, approach and retreat from the grasp used
@@ -213,6 +215,17 @@ class GraspingClient(object):
                 return
 
 #===================================================================================
+#def spawn_gazebo_model(model_path, model_name, model_pose, reference_frame="world"):
+#  model_xml = ''
+#  with open(model_path, "r") as model_file:
+#    model_xml = model_file.read().replace('\n', '')
+#  rospy.wait_for_service('/gazebo/spawn_urdf_model')
+#  try:
+#    spawn_urdf = rospy.ServiceProxy('/gazebo/spawn_urdf_model', SpawnModel)
+#    resp_urdf = spawn_urdf(model_name, model_xml, "/", model_pose, reference_frame)
+#  except rospy.ServiceException, e:
+#    rospy.logerr("Spawn URDF service call failed: {0}".format(e))
+
 def spawn_gazebo_model(model_path, model_name, model_pose, reference_frame="world"):
   model_xml = ''
   with open(model_path, "r") as model_file:
@@ -249,26 +262,64 @@ if __name__ == "__main__":
     grasping_client.stow() # Go to a default pose
     cube_in_grapper = False
 
-    init_pose = [Pose(position=Point(x=0.8, y=-0.2, z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)),
-                 Pose(position=Point(x=0.7, y=-0.1,  z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)),
-                 Pose(position=Point(x=0.8, y=0, z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)),
-                 Pose(position=Point(x=0.7, y=0.2,    z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1))]
+    init_pose = [Pose(position=Point(x=0.8, y=-0.3, z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)),
+                 Pose(position=Point(x=0.8, y=-0.2,  z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)),
+                 Pose(position=Point(x=0.8, y=-0.1, z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)),
+                 Pose(position=Point(x=0.8, y=-0,    z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)),
+                 Pose(position=Point(x=0.8, y=0.1,  z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)),
+                 Pose(position=Point(x=0.8, y=0.3,   z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)),
+                 Pose(position=Point(x=0.8, y=0.2,  z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1))]
+#initial pose of objects
+#0.62    0.182   0.65    0       0 0
+#1.075   0.442   0.7     0       0 0.587
+#0.62    -0.078  0.7     0       0 1.5708
+#0.945   0.832   0.65    0       0 1.5708
+#1.01    -0.494  0.65    0       0 1.5708
+#0.62    -0.598  2       1.5708  0 1.5708
+#1.01    -0.858  0.65    1.5708  0 1.5708
 
-    obj0_goal = (0, Pose(position=Point(x=0.6, y= 0.1,  z= 0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)))
-    obj1_goal = (1, Pose(position=Point(x=0.6, y= 0.3,  z= 0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)))
-    obj2_goal = (2, Pose(position=Point(x=0.6, y= -0.2,  z= 0.5),  orientation=Quaternion(x=0, y=0, z=0, w=1)))
-    obj3_goal = (3, Pose(position=Point(x=0.6, y= -0.1, z= 0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)))
+    #init_pose = [Pose(position=Point(x=0.62,  y=0.182 *0.6,  z=0.65), orientation=Quaternion(x=0, y=0, z=0, w=1)),
+    #             Pose(position=Point(x=1.075, y=0.442 *0.6,  z=0.65), orientation=Quaternion(x=0, y=0, z=0, w=1)),
+    #             Pose(position=Point(x=0.62,  y=-0.078*0.6,  z=0.65), orientation=Quaternion(x=0, y=0, z=0, w=1)),
+    #             Pose(position=Point(x=0.945, y=0.732 *0.6,  z=0.65), orientation=Quaternion(x=0, y=0, z=0, w=1)),
+    #             Pose(position=Point(x=1.01,  y=-0.494*0.6,  z=0.65), orientation=Quaternion(x=0, y=0, z=0, w=1)),
+    #             Pose(position=Point(x=0.62,  y=-0.598*0.6,  z=0.65), orientation=Quaternion(x=0, y=0, z=0, w=1)),
+    #             Pose(position=Point(x=1.01,  y=-0.758*0.6,  z=0.65), orientation=Quaternion(x=0, y=0, z=0, w=1))]
+#goal pose of objects
+#0.914  -0.858 0.65 1.5708 0 0
+#0.42   -0.793 0.65 0 0 0
+#0.914  -0.598 0.7 0 0 1.5708
+#0.81   0.182 0.65 0 0 1.5708
+#0.81   0.377 0.65 0 0 1.5708
+#0.81   0.572 0.65 1.5708 0 1.5708
+#0.81   0.702 0.65 1.5708 0 1.5708
 
-    obj_goal = [obj0_goal, obj1_goal, obj2_goal, obj3_goal]
+    # object goal info tuble: (index, Pose)
+    #obj0_goal = (0, Pose(position=Point(x=0.914, y= 0.1,  z= 0.65), orientation=Quaternion(x=0, y=0, z=0, w=1)))
+    #obj1_goal = (1, Pose(position=Point(x=0.42,  y= 0.3,  z= 0.65), orientation=Quaternion(x=0, y=0, z=0, w=1)))
+    #obj2_goal = (2, Pose(position=Point(x=0.914, y= -0.2,  z= 0.65),  orientation=Quaternion(x=0, y=0, z=0, w=1)))
+    #obj3_goal = (3, Pose(position=Point(x=0.81,  y= -0.1, z= 0.65), orientation=Quaternion(x=0, y=0, z=0, w=1)))
+    #obj4_goal = (4, Pose(position=Point(x=0.81,  y= 0,     z= 0.65), orientation=Quaternion(x=0, y=0, z=0, w=1)))
+    #obj5_goal = (5, Pose(position=Point(x=0.81,  y= 0.2,   z= 0.65), orientation=Quaternion(x=0, y=0, z=0, w=1)))
+    #obj6_goal = (6, Pose(position=Point(x=0.81,  y= -0.3, z= 0.65), orientation=Quaternion(x=0, y=0, z=0, w=1)))
+
+    obj0_goal = (0, Pose(position=Point(x=0.6, y= 0.1,  z= 0.65), orientation=Quaternion(x=0, y=0, z=0, w=1)))
+    obj1_goal = (1, Pose(position=Point(x=0.6, y= 0.3,  z= 0.65), orientation=Quaternion(x=0, y=0, z=0, w=1)))
+    obj2_goal = (2, Pose(position=Point(x=0.6, y= -0.2,  z= 0.65),  orientation=Quaternion(x=0, y=0, z=0, w=1)))
+    obj3_goal = (3, Pose(position=Point(x=0.6, y= -0.1, z= 0.65), orientation=Quaternion(x=0, y=0, z=0, w=1)))
+    obj4_goal = (4, Pose(position=Point(x=0.6, y= 0,     z= 0.65), orientation=Quaternion(x=0, y=0, z=0, w=1)))
+    obj5_goal = (5, Pose(position=Point(x=0.6, y= 0.2,   z= 0.65), orientation=Quaternion(x=0, y=0, z=0, w=1)))
+    obj6_goal = (6, Pose(position=Point(x=0.6, y= -0.3, z= 0.65), orientation=Quaternion(x=0, y=0, z=0, w=1)))
+
+    obj_goal = [obj0_goal, obj1_goal, obj2_goal, obj3_goal, obj4_goal, obj5_goal, obj6_goal]
 
     sorted_obj_goal = sorted(obj_goal, key=lambda obj: (obj[1].position.y, -obj[1].position.x))
 
-    object_no = 4
+    object_no = 7
     for b in range(0, object_no): #generate block objects
     #m0: apple**, m1: cracker, m2: mustard, m3: spam**, m4: spam, m5:tomato***, m6:tomato
-    #mm0: apple, mm1: spam, mm2: spam, mm3: toamto
         #object_path = os.path.join(pack_path, 'models', 'block2', 'm'+str(0), 'model.sdf')
-        object_path = os.path.join(pack_path, 'models', 'block', 'mm'+str(b)+'.sdf')
+        object_path = os.path.join(pack_path, 'models', 'block', 'm'+str(0)+'.sdf')
         object_name = 'obj'+str(b)
         object_pose = init_pose[b]
         spawn_gazebo_model(object_path, object_name, object_pose)
@@ -281,13 +332,6 @@ if __name__ == "__main__":
     while not rospy.is_shutdown():
         obj_i += 1
         head_action.look_at(1.2, 0.0, 0.0, "base_link")
-        print("*******Waiting for lookat 1")
-        time.sleep(2.0)
-
-        head_action.look_at(1.2, 0.0, 0.0, "world")
-        print("*******Waiting for lookat 2")
-        time.sleep(2.0)
-
 
         # Get block to pick
         fail_ct = 0
@@ -329,7 +373,6 @@ if __name__ == "__main__":
             pose.header.frame_id = cube.header.frame_id
             if grasping_client.place(cube, pose):
                 cube_in_grapper = False
-                time.sleep(1.0)
                 break
             rospy.logwarn("Placing failed.")
             #grasping_client.intermediate_stow()

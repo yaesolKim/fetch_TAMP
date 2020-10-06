@@ -1,9 +1,9 @@
 [  0%] Built target shape_msgs_generate_messages_lisp
-[  0%] Built target _object_msgs_generate_messages_check_deps_Object
 [  0%] Built target _object_msgs_generate_messages_check_deps_ObjectPose
+[  0%] Built target _object_msgs_generate_messages_check_deps_Object
 [  0%] Built target _object_msgs_generate_messages_check_deps_RegisterObject
-[  0%] Built target std_msgs_generate_messages_lisp
 [  0%] Built target _object_msgs_generate_messages_check_deps_ObjectInfo
+[  0%] Built target std_msgs_generate_messages_lisp
 [  0%] Built target object_recognition_msgs_generate_messages_lisp
 [  0%] Built target geometry_msgs_generate_messages_lisp
 [  0%] Built target object_recognition_msgs_generate_messages_py

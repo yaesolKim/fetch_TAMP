@@ -20,6 +20,7 @@
 * `roslaunch fetch_gazebo_demo pick_place_demo.launch`
 
 
+
 ### 3. 2번 대신 fetch_tufts 이용하면서 moveit 쓰는 경우, 아직 구현중. 이걸로 구현중!
 (2번이랑 뭐가 다른지 코드 봐야겠다)
 1. 가재보 환경 런치
@@ -27,3 +28,12 @@
 
 2. 데모 프로그램 런치
 * `roslaunch fetch_tufts pick_place_demo.launch`
+
+
+
+### 4. fetch로 navigation
+1. 가재보 환경 런치
+* `roslaunch fetch_gazebo playground.launch`
+
+2. 데모 프로그램 런치
+* `roslaunch fetch_gazebo_demo demo.launch`

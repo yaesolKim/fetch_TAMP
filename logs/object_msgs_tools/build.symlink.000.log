@@ -1,6 +1,0 @@
-Symlinking /home/glab/fetch_TAMP/devel/share/object_msgs_tools/cmake/object_msgs_toolsConfig-version.cmake
-Symlinking /home/glab/fetch_TAMP/devel/share/object_msgs_tools/cmake/object_msgs_toolsConfig.cmake
-Symlinking /home/glab/fetch_TAMP/devel/lib/libobject_msgs_tools.so
-Symlinking /home/glab/fetch_TAMP/devel/lib/object_msgs_tools/register_object_client
-Symlinking /home/glab/fetch_TAMP/devel/lib/object_msgs_tools/object_tf_broadcaster_node
-Symlinking /home/glab/fetch_TAMP/devel/lib/pkgconfig/object_msgs_tools.pc
