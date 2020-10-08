@@ -1,53 +1,49 @@
 Starting Fetch with ROS indigo
 ======================
 
-# 0. Manual & Support
-## Manual
+## 0. Manual & Support
 
-https://docs.fetchrobotics.com/
-
-## Support
-http://support.fetchrobotics.com:8080/ 
+Manual: https://docs.fetchrobotics.com/    
+Support: http://support.fetchrobotics.com:8080/    
 (username: jkim, password: ewhaglab)
 
 
-# 1. Install Ubuntu 14.04 LTS  (to remote PC)
+## 1. Install Ubuntu 14.04 LTS  (to remote PC)
 
-Recommend 14.04 LTS to use ROS Indigo
+Recommend 14.04 LTS to use ROS Indigo    
 +) 18.04 LTS with ROS Melodic
 
-Links
-Making bootable USB: http://webnautes.tistory.com/1146
-Partition: http://blog.dalli.kr/archives/1414
-Remove ubuntu:  http://jimnong.tistory.com/677?category=575588
+```
+Making bootable USB: http://webnautes.tistory.com/1146    
+Partition: http://blog.dalli.kr/archives/1414    
+Remove ubuntu:  http://jimnong.tistory.com/677?category=575588    
+```
 
+## 2. Install ROS Indigo (to remote PC)
 
-# 2. Install ROS Indigo (to remote PC)
+Refer to the link below and follow step by step as indicated    
+```
+Install Ubuntu: http://wiki.ros.org/indigo/Installation/Ubuntu    
+Creating catkin workspacehttp://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment
 
-Refer to the link below and follow step by step as indicated
-http://wiki.ros.org/indigo/Installation/Ubuntu    
-     (installation)
-
-http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment (creating catkin workspace)
-
-
-# 3. Download Fetch packages (to remote PC)
+```
+## 3. Download Fetch packages (to remote PC)
 
 Commands below are the proper order of downloading Fetch packages after creating catkin workspace
 
 Enter commands below sequentially on remote PC
 
-$sudo apt-get install ros-melodic-fetch-*
-$cd ~/catkin_ws
-$catkin_make 
+`$sudo apt-get install ros-melodic-fetch-*    
+$cd ~/catkin_ws    
+$catkin_make `
 
 
-# 4. Gazebo Simulation (Without Robot)
+## 4. Gazebo Simulation (Without Robot)
 
 Set ROS_MASTER_URI and ROS_HOSTNAME as localhost and run launch file
 Must use while robot power is off
 
-## Network Configuration
+### Network Configuration
 
 Enter ‘$sudo gedit ~/.bashrc’ on terminal
 Add those to the file and save the changes
@@ -59,7 +55,7 @@ export ROS_HOSTNAME=localhost
 source ~/.bashrc
 
 
-# 5. Moveit (c++)
+## 5. Moveit (c++)
 
 Commands for launching moveit setup assistant
 
@@ -80,7 +76,7 @@ https://www.youtube.com/watch?v=rfcXZcKZd8A&index=4&t=160s&list=LLVR1lsSDfFCKRlT
 
 ※ This setup assistant process is already done in Fetch robot, so you don’t need this if you’re manipulating robot via terminal. This process is needed when you use gazebo simulator in your remote PC. 
 
-##Generating packages
+###Generating packages
 
 Create planning group
 Generate moveit package
@@ -96,9 +92,9 @@ $ cd ~/catkin_ws/src
 $ catkin_create_pkg <pkg_name> <dependency>
 
 
-# 6. Network Configuration 
+## 6. Network Configuration 
 
-## in remote PC
+### in remote PC
 
 Firstly, connect both PC and Fetch to the same Wi-Fi Network
 
@@ -121,7 +117,7 @@ export LC_ALL=C
 Enter ‘$source ~/.bashrc’ on terminal (Necessary) 
 
 
-## in Fetch
+### in Fetch
 
 
 Enter ‘$sudo gedit /etc/hosts’ on terminal
@@ -136,7 +132,7 @@ Add those to the file and save the changes
 No need to indicate ROS_HOSTNAME and ROS_MASTER_URI in bashrc file in Fetch 
 
 
-## Test NW configuration
+### Test NW configuration
 
 Enter ‘$ping fetch58’ in remote PC
 
@@ -147,7 +143,7 @@ Enter ‘$ping fetch58’ in remote PC
 
 If you can receive packets as picture above, it’s successfully connected 
 
-# 7. Terminal
+## 7. Terminal
 
 Enter terminal
 $ssh fetch@fetch58
@@ -155,20 +151,20 @@ $ssh fetch@fetch58
 
 All the map files, cpp files, and launch files are recommended to stored at robot PC.
 
-# 8. Test Teleoperation
+## 8. Test Teleoperation
 
 $rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 
-# 9. Robot Calibration
-f
-## Arm
+## 9. Robot Calibration
+
+### Arm
 $ calibrate_robot --reset
 $ calibrate_robot --arm --install
 
 ※ While calibration, message ‘[ERROR]: Found empty JointState message’  can appear even the calibration worked successfully.
 ※ Raise the torso to full extension and make free space near robot.
 
-## Torso
+### Torso
 $ sudo service robot stop
 $ rosrun fetch_drivers torso_calibrate calibrate
 $ rosrun fetch_drivers torso_calibrate verify
@@ -177,7 +173,7 @@ $ sudo service robot start (after calibration completed)
 ※ Move torso to lower position, and tuck the arm before running calibration. It’d be better to keep holding the robot arm while calibration. 
 
 
-# 10. Map building
+## 10. Map building
 
 Enter ‘$roslaunch fetch_navigation build_map.launch’ in terminal 1
 Enter ‘$rviz’ in terminal 2 
@@ -191,7 +187,7 @@ Kill t1, t2, t3, t4
 move map_name.pgm, map_name.yaml file to /opt/ros/indigo/share/fetch_maps/maps
 
 
-# 11. Navigation
+## 11. Navigation
 
 $roslaunch fetch_navigation fetch_nav.launch map_file:=/opt/ros/indigo/share/fetch_maps/maps/map_name.yaml
 
