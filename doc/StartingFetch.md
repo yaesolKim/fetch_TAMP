@@ -5,37 +5,33 @@ Starting Fetch with ROS indigo
 
 Manual: https://docs.fetchrobotics.com/    
 Support: http://support.fetchrobotics.com:8080/    
-(username: jkim, password: ewhaglab)
+(username: jkim, password: ewhaglab)    
 
 
-## 1. Install Ubuntu 14.04 LTS  (to remote PC)
+## 1. Install Ubuntu 14.04 LTS (to remote PC)
 
-Recommend 14.04 LTS to use ROS Indigo    
-+) 18.04 LTS with ROS Melodic
-
-```
 Making bootable USB: http://webnautes.tistory.com/1146    
 Partition: http://blog.dalli.kr/archives/1414    
-Remove ubuntu:  http://jimnong.tistory.com/677?category=575588    
-```
+Remove ubuntu:  http://jimnong.tistory.com/677?category=575588   
+
 
 ## 2. Install ROS Indigo (to remote PC)
 
-Refer to the link below and follow step by step as indicated    
-```
 Install Ubuntu: http://wiki.ros.org/indigo/Installation/Ubuntu    
-Creating catkin workspacehttp://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment
+Creating catkin workspacehttp://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment    
 
-```
+
 ## 3. Download Fetch packages (to remote PC)
 
-Commands below are the proper order of downloading Fetch packages after creating catkin workspace
+Commands below are the proper order of downloading Fetch packages after creating catkin workspace   
 
-Enter commands below sequentially on remote PC
+Enter commands below sequentially on remote PC   
 
-`$sudo apt-get install ros-melodic-fetch-*    
-$cd ~/catkin_ws    
-$catkin_make `
+```
+$ sudo apt-get install ros-melodic-fetch-*    
+$ cd ~/catkin_ws    
+$ catkin_make
+```
 
 
 ## 4. Gazebo Simulation (Without Robot)

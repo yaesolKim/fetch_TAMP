@@ -6,8 +6,8 @@ Task and motion planning package for fetch robot picking and placing objects
 
 ### 2. Build the catkin workspace
 ```
-cd fetch_TAMP
-catkin build
+$ cd fetch_TAMP
+$ catkin build
 ```
 
 ### 3. Run
