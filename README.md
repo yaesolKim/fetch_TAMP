@@ -1,5 +1,6 @@
 # fetch_TAMP
-시연이를 도와주기 위한 프로젝트: fetch TAMP로 pick and place 하기!
+
+Task and motion planning package for fetch robot picking and placing objects
 
 ### 1. Create catkin workspace
 
