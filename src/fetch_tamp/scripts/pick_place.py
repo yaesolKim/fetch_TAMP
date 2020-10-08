@@ -268,7 +268,7 @@ if __name__ == "__main__":
     #m0: apple**, m1: cracker, m2: mustard, m3: spam**, m4: spam, m5:tomato***, m6:tomato
     #mm0: apple, mm1: spam, mm2: spam, mm3: toamto
         #object_path = os.path.join(pack_path, 'models', 'block2', 'm'+str(0), 'model.sdf')
-        object_path = os.path.join(pack_path, 'models', 'block', 'mm'+str(b)+'.sdf')
+        object_path = os.path.join(pack_path, 'models', 'block', 'mmm'+str(b)+'.sdf')
         object_name = 'obj'+str(b)
         object_pose = init_pose[b]
         spawn_gazebo_model(object_path, object_name, object_pose)
