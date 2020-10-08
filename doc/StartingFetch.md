@@ -90,9 +90,9 @@ $ catkin_create_pkg <pkg_name> <dependency>
 
 ## 6. Network Configuration 
 
-### In remote PC
+### 6.1. Connect remote PC and Fetch PC to the same Wi-Fi Network
 
-Firstly, connect both PC and Fetch to the same Wi-Fi Network   
+### 6.2. Set remote PC
 
 Enter ‘$sudo gedit /etc/hosts’ on terminal   
 Add those to the file and save the changes    
@@ -100,7 +100,7 @@ Add those to the file and save the changes
 ``` 
 127.0.0.1	localhost   
 127.0.1.1	glab-M15x	# PC’s hostname   
-192.168.0.56	fetch58         # fetch’s IP address   
+192.168.0.56	fetch58         # fetch’s IP address (wifi)   
 ```
 
 Enter ‘$sudo gedit ~/.bashrc’ on terminal   
@@ -115,8 +115,7 @@ export LC_ALL=C
 Enter ‘$source ~/.bashrc’ on terminal (Necessary)    
 
 
-### In Fetch PC
-
+### 6.3. Set Fetch PC
 
 Enter ‘$sudo gedit /etc/hosts’ on terminal   
 Add those to the file and save the changes   
@@ -127,7 +126,6 @@ Add those to the file and save the changes
 10.200.23.219        fetch58   
 ```
 
-
 No need to indicate ROS_HOSTNAME and ROS_MASTER_URI in bashrc file in Fetch    
 
 
@@ -135,6 +133,7 @@ No need to indicate ROS_HOSTNAME and ROS_MASTER_URI in bashrc file in Fetch
 
 Enter ‘$ping fetch58’ in remote PC   
 If you can receive packets as picture above, it’s successfully connected    
+
 
 ## 7. Terminal
 
