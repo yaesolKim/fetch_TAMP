@@ -250,9 +250,9 @@ if __name__ == "__main__":
     cube_in_grapper = False
 
     init_pose = [Pose(position=Point(x=0.8, y=-0.2, z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)),
-                 Pose(position=Point(x=0.7, y=-0.1,  z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)),
+                 Pose(position=Point(x=0.65, y=-0.1,  z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)),
                  Pose(position=Point(x=0.8, y=0, z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)),
-                 Pose(position=Point(x=0.7, y=0.2,    z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1))]
+                 Pose(position=Point(x=0.65, y=0.2,    z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1))]
 
     obj0_goal = (0, Pose(position=Point(x=0.6, y= 0.1,  z= 0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)))
     obj1_goal = (1, Pose(position=Point(x=0.6, y= 0.3,  z= 0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)))
@@ -268,7 +268,7 @@ if __name__ == "__main__":
     #m0: apple**, m1: cracker, m2: mustard, m3: spam**, m4: spam, m5:tomato***, m6:tomato
     #mm0: apple, mm1: spam, mm2: spam, mm3: toamto
         #object_path = os.path.join(pack_path, 'models', 'block2', 'm'+str(0), 'model.sdf')
-        object_path = os.path.join(pack_path, 'models', 'block', 'mmm'+str(b)+'.sdf')
+        object_path = os.path.join(pack_path, 'models', 'block', 'mm'+str(b)+'.sdf')
         object_name = 'obj'+str(b)
         object_pose = init_pose[b]
         spawn_gazebo_model(object_path, object_name, object_pose)
