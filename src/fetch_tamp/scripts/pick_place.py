@@ -131,20 +131,28 @@ class GraspingClient(object):
                obj.object.primitives[0].dimensions[0] > 0.25 or \
                obj.object.primitives[0].dimensions[0] < 0.03 or \
                obj.object.primitives[0].dimensions[0] > 0.25:
+                print("!!!!!!!!!!!!!!!A!!!!!!!!!!!!!!!!")
                 continue
+
             # has to be on table
-            if obj.object.primitive_poses[0].position.z < 0.4:
+            if obj.object.primitive_poses[0].position.z < 0.35:
+                print("!!!!!!!!!!!!!!!B!!!!!!!!!!!!!!!!")
                 continue
             if obj.object.primitive_poses[0].position.x < 0.3:
+                print("!!!!!!!!!!!!!!!C!!!!!!!!!!!!!!!!")
                 continue
+
             # get goal object
-            if ( abs(obj.object.primitive_poses[0].position.x - goal_obj_x) > 0.03):
+            if ( abs(obj.object.primitive_poses[0].position.x - goal_obj_x) > 0.09):
+                print("!!!!!!!!!!!!!!!D!!!!!!!!!!!!!!!!")
                 continue
-            if ( abs(obj.object.primitive_poses[0].position.y - goal_obj_y) > 0.03):
+            if ( abs(obj.object.primitive_poses[0].position.y - goal_obj_y) > 0.09):
+                print("!!!!!!!!!!!!!!!E!!!!!!!!!!!!!!!!")
                 continue
 
             print("**************************************Object Name: ", obj.object.name)
             print("Object Pose: ", obj.object.primitive_poses[0], obj.object.primitives[0])
+
             return obj.object, obj.grasps
         # nothing detected
         return None, None
@@ -249,15 +257,15 @@ if __name__ == "__main__":
     grasping_client.stow() # Go to a default pose
     cube_in_grapper = False
 
-    init_pose = [Pose(position=Point(x=0.8, y=-0.2, z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)),
-                 Pose(position=Point(x=0.65, y=-0.1,  z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)),
-                 Pose(position=Point(x=0.8, y=0, z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)),
-                 Pose(position=Point(x=0.65, y=0.2,    z=0.5), orientation=Quaternion(x=0, y=0, z=0, w=1))]
+    init_pose = [Pose(position=Point(x=0.8, y=-0.25, z=0.5), orientation=Quaternion(x=1.61, y=0, z=1.61, w=1)),
+                 Pose(position=Point(x=0.8, y=-0.1,  z=0.5), orientation=Quaternion(x=0, y=1.61, z=1.6, w=1)),
+                 Pose(position=Point(x=0.8, y=0.07, z=0.5), orientation=Quaternion(x=1.61, y=0, z=1.6, w=1)),
+                 Pose(position=Point(x=0.8, y=0.25, z=0.5), orientation=Quaternion(x=0, y=1.61, z=0, w=1))]
 
-    obj0_goal = (0, Pose(position=Point(x=0.6, y= 0.1,  z= 0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)))
-    obj1_goal = (1, Pose(position=Point(x=0.6, y= 0.3,  z= 0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)))
-    obj2_goal = (2, Pose(position=Point(x=0.6, y= -0.2,  z= 0.5),  orientation=Quaternion(x=0, y=0, z=0, w=1)))
-    obj3_goal = (3, Pose(position=Point(x=0.6, y= -0.1, z= 0.5), orientation=Quaternion(x=0, y=0, z=0, w=1)))
+    obj0_goal = (0, Pose(position=Point(x=0.65, y= 0.1,  z= 0.5), orientation=Quaternion(x=0, y=1.61, z=0, w=1)))
+    obj1_goal = (1, Pose(position=Point(x=0.65, y= -0.2,  z= 0.5), orientation=Quaternion(x=0, y=1.61, z=0, w=1)))
+    obj2_goal = (2, Pose(position=Point(x=0.65, y= -0.1,  z= 0.5),  orientation=Quaternion(x=0, y=1.61, z=0, w=1)))
+    obj3_goal = (3, Pose(position=Point(x=0.65, y= 0.2, z= 0.5), orientation=Quaternion(x=0, y=1.61, z=0, w=1)))
 
     obj_goal = [obj0_goal, obj1_goal, obj2_goal, obj3_goal]
 
@@ -272,20 +280,13 @@ if __name__ == "__main__":
         object_name = 'obj'+str(b)
         object_pose = init_pose[b]
         spawn_gazebo_model(object_path, object_name, object_pose)
-        time.sleep(0.3)
-    print("*******Waiting for obj stable")
-
-    time.sleep(10.0)
+        time.sleep(1.0)
 
     obj_i = -1
     while not rospy.is_shutdown():
         obj_i += 1
         head_action.look_at(1.2, 0.0, 0.0, "base_link")
         print("*******Waiting for lookat 1")
-        time.sleep(2.0)
-
-        head_action.look_at(1.2, 0.0, 0.0, "world")
-        print("*******Waiting for lookat 2")
         time.sleep(2.0)
 
 
@@ -326,10 +327,12 @@ if __name__ == "__main__":
             pose = PoseStamped()
             pose.pose = cube.primitive_poses[0]
             pose.pose.position = sorted_obj_goal[obj_i][1].position
+            #pose.pose.orientation = sorted_obj_goal[obj_i][1].orientation   #YS TODO: orientation
             pose.header.frame_id = cube.header.frame_id
             if grasping_client.place(cube, pose):
                 cube_in_grapper = False
                 time.sleep(1.0)
+                grasping_client.stow()
                 break
             rospy.logwarn("Placing failed.")
             #grasping_client.intermediate_stow()

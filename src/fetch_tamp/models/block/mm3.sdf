@@ -20,7 +20,8 @@
         <pose>0 0.03535 0  0 0 0</pose>
 	<geometry>
           <box>
-    		<size>0.066 0.101 0.066</size>
+	    <size>0.0528 0.0808 0.0528</size>
+    		<!--<size>0.066 0.101 0.066</size>-->
   	  </box>
         </geometry>
         <surface>
