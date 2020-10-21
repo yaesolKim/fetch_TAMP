@@ -1,6 +1,7 @@
 # fetch_TAMP
 
-Task and motion planning package for fetch robot picking and placing objects
+Task and motion planning package for fetch robot picking and placing objects		
++ DOPE
 
 ### 1. Create catkin workspace
 
