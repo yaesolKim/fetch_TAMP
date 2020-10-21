@@ -244,7 +244,7 @@ def delete_gazebo_model(models):
 #===================================================================================
 if __name__ == "__main__":
     rospack = rospkg.RosPack()
-    pack_path = rospack.get_path('fetch_tamp')
+    pack_path = rospack.get_path('fetch_gazebo')
     rospy.init_node("demo") # Create a node
 
     # Make sure sim time is working
