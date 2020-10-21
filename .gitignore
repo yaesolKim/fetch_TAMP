@@ -3,7 +3,5 @@ devel/
 logs/
 .catkin_tools/
 src/panda_moveit_config/
-src/fetch_gazebo
-src/fetch_ros
 src/gazebo-pkgs
 src/general-message-pkgs
