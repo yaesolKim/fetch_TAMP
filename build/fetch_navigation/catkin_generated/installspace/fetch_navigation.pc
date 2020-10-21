@@ -1,8 +1,0 @@
-prefix=/home/glab/fetch_TAMP/install
-
-Name: fetch_navigation
-Description: Description of fetch_navigation
-Version: 0.8.2
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

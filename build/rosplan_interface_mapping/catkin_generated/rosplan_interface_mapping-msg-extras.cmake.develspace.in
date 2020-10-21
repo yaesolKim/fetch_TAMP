@@ -1,2 +1,0 @@
-set(rosplan_interface_mapping_MESSAGE_FILES "")
-set(rosplan_interface_mapping_SERVICE_FILES "/home/glab/fetch_TAMP/src/rosplan_demos/rosplan_demos_interfaces/rosplan_interface_mapping/srv/CreatePRM.srv;/home/glab/fetch_TAMP/src/rosplan_demos/rosplan_demos_interfaces/rosplan_interface_mapping/srv/AddWaypoint.srv;/home/glab/fetch_TAMP/src/rosplan_demos/rosplan_demos_interfaces/rosplan_interface_mapping/srv/RemoveWaypoint.srv")

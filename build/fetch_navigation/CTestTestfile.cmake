@@ -1,9 +1,0 @@
-# CMake generated Testfile for 
-# Source directory: /home/glab/fetch_TAMP/src/fetch_ros/fetch_navigation
-# Build directory: /home/glab/fetch_TAMP/build/fetch_navigation
-# 
-# This file includes the relevant testing commands required for 
-# testing this directory and lists subdirectories to be tested as well.
-add_test(_ctest_fetch_navigation_roslaunch-check_launch_fetch_nav.launch "/home/glab/fetch_TAMP/build/fetch_navigation/catkin_generated/env_cached.sh" "/usr/bin/python2" "/opt/ros/melodic/share/catkin/cmake/test/run_tests.py" "/home/glab/fetch_TAMP/build/fetch_navigation/test_results/fetch_navigation/roslaunch-check_launch_fetch_nav.launch.xml" "--return-code" "/usr/bin/cmake -E make_directory /home/glab/fetch_TAMP/build/fetch_navigation/test_results/fetch_navigation" "/opt/ros/melodic/share/roslaunch/cmake/../scripts/roslaunch-check -o \"/home/glab/fetch_TAMP/build/fetch_navigation/test_results/fetch_navigation/roslaunch-check_launch_fetch_nav.launch.xml\" \"/home/glab/fetch_TAMP/src/fetch_ros/fetch_navigation/launch/fetch_nav.launch\" ")
-add_test(_ctest_fetch_navigation_roslaunch-check_launch_freight_nav.launch "/home/glab/fetch_TAMP/build/fetch_navigation/catkin_generated/env_cached.sh" "/usr/bin/python2" "/opt/ros/melodic/share/catkin/cmake/test/run_tests.py" "/home/glab/fetch_TAMP/build/fetch_navigation/test_results/fetch_navigation/roslaunch-check_launch_freight_nav.launch.xml" "--return-code" "/usr/bin/cmake -E make_directory /home/glab/fetch_TAMP/build/fetch_navigation/test_results/fetch_navigation" "/opt/ros/melodic/share/roslaunch/cmake/../scripts/roslaunch-check -o \"/home/glab/fetch_TAMP/build/fetch_navigation/test_results/fetch_navigation/roslaunch-check_launch_freight_nav.launch.xml\" \"/home/glab/fetch_TAMP/src/fetch_ros/fetch_navigation/launch/freight_nav.launch\" ")
-subdirs("gtest")
