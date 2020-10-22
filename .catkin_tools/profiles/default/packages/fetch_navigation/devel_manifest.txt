@@ -1,5 +1,0 @@
-fetch_ros/fetch_navigation
-/home/glab/fetch_TAMP/devel/.private/fetch_navigation/cmake.lock /home/glab/fetch_TAMP/devel/./cmake.lock
-/home/glab/fetch_TAMP/devel/.private/fetch_navigation/lib/pkgconfig/fetch_navigation.pc /home/glab/fetch_TAMP/devel/lib/pkgconfig/fetch_navigation.pc
-/home/glab/fetch_TAMP/devel/.private/fetch_navigation/share/fetch_navigation/cmake/fetch_navigationConfig-version.cmake /home/glab/fetch_TAMP/devel/share/fetch_navigation/cmake/fetch_navigationConfig-version.cmake
-/home/glab/fetch_TAMP/devel/.private/fetch_navigation/share/fetch_navigation/cmake/fetch_navigationConfig.cmake /home/glab/fetch_TAMP/devel/share/fetch_navigation/cmake/fetch_navigationConfig.cmake

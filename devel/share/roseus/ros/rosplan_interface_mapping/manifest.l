@@ -1,1 +1,0 @@
-/home/glab/fetch_TAMP/devel/.private/rosplan_interface_mapping/share/roseus/ros/rosplan_interface_mapping/manifest.l

@@ -1,1 +1,0 @@
-/home/glab/fetch_TAMP/devel/.private/fetchit_challenge/share/fetchit_challenge/msg/SickCameraFeedback.msg

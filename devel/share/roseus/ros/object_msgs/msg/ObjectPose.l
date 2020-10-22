@@ -1,1 +1,0 @@
-/home/glab/fetch_TAMP/devel/.private/object_msgs/share/roseus/ros/object_msgs/msg/ObjectPose.l

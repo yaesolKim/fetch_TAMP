@@ -1,5 +1,0 @@
-fetch_tufts
-/home/glab/fetch_TAMP/devel/.private/fetch_tufts/cmake.lock /home/glab/fetch_TAMP/devel/./cmake.lock
-/home/glab/fetch_TAMP/devel/.private/fetch_tufts/share/fetch_tufts/cmake/fetch_tuftsConfig-version.cmake /home/glab/fetch_TAMP/devel/share/fetch_tufts/cmake/fetch_tuftsConfig-version.cmake
-/home/glab/fetch_TAMP/devel/.private/fetch_tufts/share/fetch_tufts/cmake/fetch_tuftsConfig.cmake /home/glab/fetch_TAMP/devel/share/fetch_tufts/cmake/fetch_tuftsConfig.cmake
-/home/glab/fetch_TAMP/devel/.private/fetch_tufts/lib/pkgconfig/fetch_tufts.pc /home/glab/fetch_TAMP/devel/lib/pkgconfig/fetch_tufts.pc

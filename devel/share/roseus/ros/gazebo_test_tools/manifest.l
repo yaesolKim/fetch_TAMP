@@ -1,1 +1,0 @@
-/home/glab/fetch_TAMP/devel/.private/gazebo_test_tools/share/roseus/ros/gazebo_test_tools/manifest.l

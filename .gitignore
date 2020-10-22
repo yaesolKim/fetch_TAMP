@@ -1,4 +1,9 @@
-build/
-devel/
-logs/
-.catkin_tools/
+fetch_ws/build/
+fetch_ws/devel/
+fetch_ws/logs/
+fetch_ws/.catkin_tools/
+
+dope_ws/build/
+dope_ws/devel/
+dope_ws/logs/
+dope_ws/src/dope/weights

@@ -1,5 +1,0 @@
-fetch_tamp
-/home/glab/fetch_TAMP/devel/.private/fetch_tamp/cmake.lock /home/glab/fetch_TAMP/devel/./cmake.lock
-/home/glab/fetch_TAMP/devel/.private/fetch_tamp/lib/pkgconfig/fetch_tamp.pc /home/glab/fetch_TAMP/devel/lib/pkgconfig/fetch_tamp.pc
-/home/glab/fetch_TAMP/devel/.private/fetch_tamp/share/fetch_tamp/cmake/fetch_tampConfig-version.cmake /home/glab/fetch_TAMP/devel/share/fetch_tamp/cmake/fetch_tampConfig-version.cmake
-/home/glab/fetch_TAMP/devel/.private/fetch_tamp/share/fetch_tamp/cmake/fetch_tampConfig.cmake /home/glab/fetch_TAMP/devel/share/fetch_tamp/cmake/fetch_tampConfig.cmake

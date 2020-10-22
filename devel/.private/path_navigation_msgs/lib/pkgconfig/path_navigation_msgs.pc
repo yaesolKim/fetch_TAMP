@@ -1,8 +1,0 @@
-prefix=/home/glab/fetch_TAMP/devel/.private/path_navigation_msgs
-
-Name: path_navigation_msgs
-Description: Description of path_navigation_msgs
-Version: 1.0.0
-Cflags: -I/home/glab/fetch_TAMP/devel/.private/path_navigation_msgs/include
-Libs: -L${prefix}/lib 
-Requires: actionlib actionlib_msgs control_msgs geometry_msgs nav_msgs message_runtime

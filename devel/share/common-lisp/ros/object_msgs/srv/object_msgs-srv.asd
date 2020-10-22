@@ -1,1 +1,0 @@
-/home/glab/fetch_TAMP/devel/.private/object_msgs/share/common-lisp/ros/object_msgs/srv/object_msgs-srv.asd

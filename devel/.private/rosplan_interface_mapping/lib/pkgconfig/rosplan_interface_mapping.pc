@@ -1,8 +1,0 @@
-prefix=/home/glab/fetch_TAMP/devel/.private/rosplan_interface_mapping
-
-Name: rosplan_interface_mapping
-Description: Description of rosplan_interface_mapping
-Version: 0.0.2
-Cflags: -I/home/glab/fetch_TAMP/devel/.private/rosplan_interface_mapping/include
-Libs: -L${prefix}/lib 
-Requires: 

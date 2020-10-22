@@ -1,1 +1,0 @@
-/home/glab/fetch_TAMP/devel/.private/fetchit_challenge/share/roseus/ros/fetchit_challenge/msg/SickCameraAction.l

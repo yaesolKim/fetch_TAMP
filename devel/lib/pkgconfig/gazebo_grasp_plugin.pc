@@ -1,1 +1,0 @@
-/home/glab/fetch_TAMP/devel/.private/gazebo_grasp_plugin/lib/pkgconfig/gazebo_grasp_plugin.pc

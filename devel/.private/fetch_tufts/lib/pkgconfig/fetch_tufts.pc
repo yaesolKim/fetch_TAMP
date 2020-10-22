@@ -1,8 +1,0 @@
-prefix=/home/glab/fetch_TAMP/devel/.private/fetch_tufts
-
-Name: fetch_tufts
-Description: Description of fetch_tufts
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

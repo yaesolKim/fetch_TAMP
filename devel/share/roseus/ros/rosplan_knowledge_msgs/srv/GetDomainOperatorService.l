@@ -1,1 +1,0 @@
-/home/glab/fetch_TAMP/devel/.private/rosplan_knowledge_msgs/share/roseus/ros/rosplan_knowledge_msgs/srv/GetDomainOperatorService.l

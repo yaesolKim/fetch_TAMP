@@ -1,1 +1,0 @@
-/home/glab/fetch_TAMP/devel/.private/gazebo_test_tools/share/gennodejs/ros/gazebo_test_tools/srv/_index.js

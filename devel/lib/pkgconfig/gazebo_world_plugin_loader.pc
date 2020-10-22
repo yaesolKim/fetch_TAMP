@@ -1,1 +1,0 @@
-/home/glab/fetch_TAMP/devel/.private/gazebo_world_plugin_loader/lib/pkgconfig/gazebo_world_plugin_loader.pc

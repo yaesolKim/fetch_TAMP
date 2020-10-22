@@ -1,8 +1,0 @@
-prefix=/home/glab/fetch_TAMP/devel/.private/rosplan_sensing_interface
-
-Name: rosplan_sensing_interface
-Description: Description of rosplan_sensing_interface
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

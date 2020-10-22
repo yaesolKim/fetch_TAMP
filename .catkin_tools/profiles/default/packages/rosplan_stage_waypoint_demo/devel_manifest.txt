@@ -1,2 +1,0 @@
-rosplan_demos/rosplan_stage_waypoint_demo
-/home/glab/fetch_TAMP/devel/.private/rosplan_stage_waypoint_demo/cmake.lock /home/glab/fetch_TAMP/devel/./cmake.lock
