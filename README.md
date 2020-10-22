@@ -3,15 +3,13 @@
 Task and motion planning package for fetch robot picking and placing objects		
 + DOPE
 
-### 1. Create catkin workspace
+### 1. Clone this repository
+
+`git clone https://github.com/yaesolKim/fetch_TAMP.git`   
 
 ### 2. Install packages
-- fetch_gazebo   
-- fetch_ros   
-- gazebo_pkgs   
-- general_message_pkgs   
-- moveit_tutorial   
-- occupancy_grid_utils   
+
+If needed!
 
 ### 3.Build the catkin workspace
 ```
