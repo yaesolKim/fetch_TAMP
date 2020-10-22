@@ -1,7 +1,7 @@
 # fetch_TAMP
 
-Task and motion planning package for fetch robot picking and placing objects		
-+ DOPE
+Task and motion planning packages for fetch robot picking and placing objects		
+
 
 ### 1. Clone this repository
 
@@ -9,15 +9,23 @@ Task and motion planning package for fetch robot picking and placing objects
 
 ### 2. Install packages
 
-If needed!
+If needed.
 
-### 3.Build the catkin workspace
+### 3. Build two catkin workspaces
+
+#### 1. fetch_ws 
 ```
-$ cd fetch_TAMP
+$ cd fetch_TAMP/fetch_ws
 $ catkin build
 ```
 
+#### 2. dope_ws
+```
+$ cd fetch_TAMP/dope_ws
+$ catkin_make
+```
+
 ### 4. Run
-terminal 1: `roslaunch fetch_tamp pickplace_playground.launch`   
-terminal 2: `roslaunch fetch_tamp pick_place.launch`
+terminal 1: `roslaunch fetch_gazebo tamp_playground.launch`   
+terminal 2: `roslaunch fetch_gazebo_demo tamp_pickplace.launch`
 
