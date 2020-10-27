@@ -37,6 +37,55 @@ from geometry_msgs.msg import (
     Quaternion,
 )
 
+# Move base using navigation stack
+class MoveBaseClient(object):
+
+    def __init__(self):
+        self.client = actionlib.SimpleActionClient("move_base", MoveBaseAction)
+        rospy.loginfo("Waiting for move_base...")
+        self.client.wait_for_server()
+
+    def goto(self, x, y, theta, frame="map"):
+        move_goal = MoveBaseGoal()
+        move_goal.target_pose.pose.position.x = x
+        move_goal.target_pose.pose.position.y = y
+        move_goal.target_pose.pose.orientation.z = sin(theta/2.0)
+        move_goal.target_pose.pose.orientation.w = cos(theta/2.0)
+        move_goal.target_pose.header.frame_id = frame
+        move_goal.target_pose.header.stamp = rospy.Time.now()
+
+        # TODO wait for things to work
+        self.client.send_goal(move_goal)
+        self.client.wait_for_result()
+
+
+# Send a trajectory to controller
+class FollowTrajectoryClient(object):
+
+    def __init__(self, name, joint_names):
+        self.client = actionlib.SimpleActionClient("%s/follow_joint_trajectory" % name,
+                                                   FollowJointTrajectoryAction)
+        rospy.loginfo("Waiting for %s..." % name)
+        self.client.wait_for_server()
+        self.joint_names = joint_names
+
+    def move_to(self, positions, duration=5.0):
+        if len(self.joint_names) != len(positions):
+            print("Invalid trajectory position")
+            return False
+        trajectory = JointTrajectory()
+        trajectory.joint_names = self.joint_names
+        trajectory.points.append(JointTrajectoryPoint())
+        trajectory.points[0].positions = positions
+        trajectory.points[0].velocities = [0.0 for _ in positions]
+        trajectory.points[0].accelerations = [0.0 for _ in positions]
+        trajectory.points[0].time_from_start = rospy.Duration(duration)
+        follow_goal = FollowJointTrajectoryGoal()
+        follow_goal.trajectory = trajectory
+
+        self.client.send_goal(follow_goal)
+        self.client.wait_for_result()
+
 
 # Point the head using controller
 class PointHeadClient(object):
@@ -127,7 +176,7 @@ class GraspingClient(object):
             # need grasps
             if len(obj.grasps) < 1:
                 continue
-            # check size
+            # check size -> only care the dimension zero?
             if obj.object.primitives[0].dimensions[0] < 0.03 or \
                obj.object.primitives[0].dimensions[0] > 0.25 or \
                obj.object.primitives[0].dimensions[0] < 0.03 or \
@@ -136,10 +185,10 @@ class GraspingClient(object):
                obj.object.primitives[0].dimensions[0] > 0.25:
                 print("!!!!!!!!!!!!!!!A!!!!!!!!!!!!!!!!")
                 continue
-            print("DIMENSIONS:")
-            print(obj.object.primitives[0].dimensions[0])
-            print(obj.object.primitives[0].dimensions[1])
-            print(obj.object.primitives[0].dimensions[2])
+            #print("DIMENSIONS:")
+            #print(obj.object.primitives[0].dimensions[0])
+            #print(obj.object.primitives[0].dimensions[1])
+            #print(obj.object.primitives[0].dimensions[2])
 
             # has to be on table
             if obj.object.primitive_poses[0].position.z < 0.35:
@@ -151,7 +200,7 @@ class GraspingClient(object):
 
             # get goal object
             if (( abs(obj.object.primitive_poses[0].position.x - goal_obj_x) > 0.09) and ( abs(obj.object.primitive_poses[0].position.y - goal_obj_y) > 0.09)):
-                print("!!!!!!!!!!!!!!!D!!!!!!!!!!!!!!!!")
+                print("object is already located at the goal position")
                 continue
             #if ( abs(obj.object.primitive_poses[0].position.y - goal_obj_y) > 0.09):
             #    print("!!!!!!!!!!!!!!!E!!!!!!!!!!!!!!!!")
@@ -229,7 +278,7 @@ class GraspingClient(object):
                 return
 
 #===================================================================================
-def spawn_gazebo_model(model_path, model_name, model_pose, reference_frame="world"):
+def spawn_gazebo_model(model_path, model_name, model_pose, reference_frame="base_link"):
   model_xml = ''
   with open(model_path, "r") as model_file:
      model_xml = model_file.read().replace('\n', '')
@@ -250,6 +299,7 @@ def delete_gazebo_model(models):
   except rospy.ServiceException, e:
     rospy.loginfo("Delete Model service call failed: {0}".format(e))
 #===================================================================================
+
 if __name__ == "__main__":
     rospack = rospkg.RosPack()
     pack_path = rospack.get_path('fetch_gazebo')
@@ -260,54 +310,52 @@ if __name__ == "__main__":
         pass
 
     # Setup clients
+    move_base = MoveBaseClient()
+    torso_action = FollowTrajectoryClient("torso_controller", ["torso_lift_joint"])
     head_action = PointHeadClient()
     grasping_client = GraspingClient() # Control scene, robot, arm
-    grasping_client.stow() # Go to a default pose
+##sss
+
+
+    grasping_client.stow() # fetch go to a default pose
+
+    rospy.loginfo("Move base")
+    move_base.goto(0.0, 0.2, 0.0)
+    move_base.goto(0.0, 0.2, 0.0)
+    rospy.loginfo("Fisinish move base")
+
     cube_in_grapper = False
 
+    init_pose = [Pose(position=Point(x=0.728697, y=-0.209304, z=0.7), orientation=Quaternion(*quaternion_from_euler(1.570802, 0, 1.126349))), # spam
+                 Pose(position=Point(x=0.816205, y=-0.095273, z=0.7), orientation=Quaternion(*quaternion_from_euler(1.570805, 0, 0       ))), # tomato
+                 Pose(position=Point(x=0.764500, y= 0.050517, z=0.7), orientation=Quaternion(*quaternion_from_euler(1.570794, 0, 1.959808))), # spam
+                 Pose(position=Point(x=0.904594, y= 0.178637, z=0.7), orientation=Quaternion(*quaternion_from_euler(1.571486, 0, 0.591302))), # cracker
+                 Pose(position=Point(x=0.659131, y= 0.193666, z=0.7), orientation=Quaternion(*quaternion_from_euler(1.570780, 0, 0.591302)))] # cracker
 
-    # five models: two spam, two apple, one can
-    #init_pose = [Pose(position=Point(x=0.797289, y=-0.202685, z=0.7), orientation=Quaternion(*quaternion_from_euler(1.570802, 0, 0.584973))), # spam
-    #             Pose(position=Point(x=0.687616, y=0.0000000, z=0.7), orientation=Quaternion(*quaternion_from_euler(1.570802, 0, 0.000000))), # apple
-    #             Pose(position=Point(x=0.795236, y=0.0000000, z=0.7), orientation=Quaternion(*quaternion_from_euler(1.570768, 0, 0.000000))), # apple
-    #             Pose(position=Point(x=0.725095, y=0.1509680, z=0.7), orientation=Quaternion(*quaternion_from_euler(1.571486, 0, 2.591819))), # spam
-    #             Pose(position=Point(x=0.779330, y=0.2442900, z=0.7), orientation=Quaternion(*quaternion_from_euler(1.570780, 0, 2.587536)))] #tomato
+    obj0_goal = (0, Pose(position=Point(x=0.800000, y= 0.106937,z= 0.65), orientation=Quaternion(*quaternion_from_euler(1.571479, 0,  1.593767))))
+    obj1_goal = (1, Pose(position=Point(x=0.821760, y= 0.240767,z= 0.65), orientation=Quaternion(*quaternion_from_euler(1.570768, 0,  1.570802))))
+    obj2_goal = (2, Pose(position=Point(x=0.800000, y= 0.106937,z= 0.90), orientation=Quaternion(*quaternion_from_euler(1.571479, 0,  1.593767))))
+    obj3_goal = (3, Pose(position=Point(x=0.788811, y=-0.165824,z= 0.65), orientation=Quaternion(*quaternion_from_euler(1.571479, 0, -1.571479))))
+    obj4_goal = (4, Pose(position=Point(x=0.788811, y=-0.049230,z= 0.65), orientation=Quaternion(*quaternion_from_euler(1.571479, 0, -1.571479))))
 
-    #obj0_goal = (0, Pose(position=Point(x=0.590828, y= -0.267816,  z= 0.65), orientation=Quaternion(*quaternion_from_euler(1.571479, 0, 3.127323))))
-    #obj1_goal = (1, Pose(position=Point(x=0.600903, y= 0.062221,   z= 0.65), orientation=Quaternion(*quaternion_from_euler(1.570768, 0, 2.595484))))
-    #obj2_goal = (2, Pose(position=Point(x=0.511358, y= -0.032457,  z= 0.65), orientation=Quaternion(*quaternion_from_euler(1.570768, 0, 2.595484))))
-    #obj3_goal = (3, Pose(position=Point(x=0.591000, y= -0.166935,  z= 0.65), orientation=Quaternion(*quaternion_from_euler(1.571479, 0, 3.127323))))
-    #obj4_goal = (3, Pose(position=Point(x=0.605295, y= 0.079781,   z= 0.65), orientation=Quaternion(*quaternion_from_euler(1.570780, 0, 2.587536))))
+    obj_goal = [obj0_goal, obj1_goal, obj2_goal, obj3_goal, obj4_goal]
 
-    init_pose = [Pose(position=Point(x=0.797289, y=-0.202685, z=0.58), orientation=Quaternion(*quaternion_from_euler(1.570802, 0, 0))), # spam
-                Pose(position=Point(x=0.687616, y=0.1000000, z=0.58), orientation=Quaternion(*quaternion_from_euler(1.570802, 0, 0.000000)))] #tomato
+    sorted_obj_goal = sorted(obj_goal, key=lambda obj: (obj[1].position.y, -obj[1].position.x, -obj[1].position.z))
+    models = ['spam', 'tomato']#, 'spam', 'cracker', 'cracker']
 
-    obj0_goal = (0, Pose(position=Point(x=0.590828, y= -0.167816,  z= 0.65), orientation=Quaternion(*quaternion_from_euler(1.571479, 0, 3.127323))))
-    obj1_goal = (1, Pose(position=Point(x=0.600903, y= 0.062221,   z= 0.65), orientation=Quaternion(*quaternion_from_euler(1.570768, 0, 2.595484))))
-
-
-
-    #obj_goal = [obj0_goal, obj1_goal, obj2_goal, obj3_goal, obj4_goal]
-    obj_goal = [obj0_goal, obj1_goal]
-
-    sorted_obj_goal = sorted(obj_goal, key=lambda obj: (obj[1].position.y, -obj[1].position.x))
-
-    object_no = 2
-    for b in range(0, object_no): #generate block objects
-    #m: 0-spam, 1-apple, 2-apple, 3-spam, 4-tomato
-    #mm0: apple, mm1: spam, mm2: spam, mm3: toamto
-        object_path = os.path.join(pack_path, 'models', 'block', 'm'+str(11)+'.sdf')
+    for b in range(0, len(models)): #spawn the objects
+        object_path = os.path.join(pack_path, 'models', models[b] +'.sdf')
         object_name = 'obj'+str(b)
         object_pose = init_pose[b]
         spawn_gazebo_model(object_path, object_name, object_pose)
         time.sleep(1.0)
 
-
     obj_i = -1
     while not rospy.is_shutdown():
         obj_i += 1
-        head_action.look_at(1.2, 0.0, 0.0, "base_link")
-        print("*******Waiting for lookat 1")
+
+        head_action.look_at(1.8, 0.0, 0.0, "map")
+        print("*******Waiting for look at the table")
         time.sleep(2.0)
 
         # Get block to pick
@@ -320,15 +368,16 @@ if __name__ == "__main__":
             print("*******goal y index: ", sorted_obj_goal[obj_i][0])
             print("*******goal object y: ", init_pose[sorted_obj_goal[obj_i][0]].position.y)
 
+#            print(grasping_client.__dict__)
             cube, grasps = grasping_client.getGraspableObject(init_pose[sorted_obj_goal[obj_i][0]].position.x, init_pose[sorted_obj_goal[obj_i][0]].position.y)
 
             if cube == None:
                 rospy.logwarn("Perception failed.")
                 # grasping_client.intermediate_stow()
                 grasping_client.stow()
-                head_action.look_at(1.2, 0.0, 0.0, "base_link")
+                head_action.look_at(1.8, 0.0, 0.0, "base_link")
                 continue
-
+#ssssssss head_camera_rgb_optical_frame
             # Pick the block
             if grasping_client.pick(cube, grasps):
                 cube_in_grapper = True
@@ -342,6 +391,8 @@ if __name__ == "__main__":
                 fail_ct = 0
                 break
             fail_ct += 1
+
+        # End of the pick
 
         # Place the block
         while not rospy.is_shutdown() and cube_in_grapper:
@@ -370,3 +421,26 @@ if __name__ == "__main__":
         grasping_client.stow()
         rospy.loginfo("Finished")
         #torso_action.move_to([0.0, ])
+
+
+
+
+
+
+    # five models: two spam, two apple, one can
+    #init_pose = [Pose(position=Point(x=0.797289, y=-0.202685, z=0.7), orientation=Quaternion(*quaternion_from_euler(1.570802, 0, 0.584973))), # spam
+    #             Pose(position=Point(x=0.687616, y=0.0000000, z=0.7), orientation=Quaternion(*quaternion_from_euler(1.570802, 0, 0.000000))), # apple
+    #             Pose(position=Point(x=0.795236, y=0.0000000, z=0.7), orientation=Quaternion(*quaternion_from_euler(1.570768, 0, 0.000000))), # apple
+    #             Pose(position=Point(x=0.725095, y=0.1509680, z=0.7), orientation=Quaternion(*quaternion_from_euler(1.571486, 0, 2.591819))), # spam
+    #             Pose(position=Point(x=0.779330, y=0.2442900, z=0.7), orientation=Quaternion(*quaternion_from_euler(1.570780, 0, 2.587536)))] #tomato
+
+    #obj0_goal = (0, Pose(position=Point(x=0.590828, y= -0.267816,  z= 0.65), orientation=Quaternion(*quaternion_from_euler(1.571479, 0, 3.127323))))
+    #obj1_goal = (1, Pose(position=Point(x=0.600903, y= 0.062221,   z= 0.65), orientation=Quaternion(*quaternion_from_euler(1.570768, 0, 2.595484))))
+    #obj2_goal = (2, Pose(position=Point(x=0.511358, y= -0.032457,  z= 0.65), orientation=Quaternion(*quaternion_from_euler(1.570768, 0, 2.595484))))
+    #obj3_goal = (3, Pose(position=Point(x=0.591000, y= -0.166935,  z= 0.65), orientation=Quaternion(*quaternion_from_euler(1.571479, 0, 3.127323))))
+    #obj4_goal = (3, Pose(position=Point(x=0.605295, y= 0.079781,   z= 0.65), orientation=Quaternion(*quaternion_from_euler(1.570780, 0, 2.587536))))
+
+
+#m: 0-spam, 1-apple, 2-mustard, 3-spam, 4-tomato, 11-mustard with mesh collider
+#mm0: apple, mm1: spam, mm2: spam, mm3: toamto
+#s(model scale 1): 0-spam, 1-tomato, 2-cracker, 3-mustard

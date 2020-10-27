@@ -5,7 +5,7 @@
     <static>0</static>
     <link name="body">
       <inertial>
-	<pose>0 0.095 0 1.5707963 1.5707963 0</pose>
+	<pose>0 0.08 0 1.5707963 1.5707963 0</pose>
          <mass>0.603</mass>
          <inertia>
 	    <ixx>0.002268</ixx>
@@ -17,11 +17,12 @@
          </inertia>
 	</inertial>
       <collision name="collision">
-	<pose>0 0.095 0 0 0 0</pose>
+	<pose>0 0 0 0 0 0</pose>
         <geometry>
-          <box>
-    		<size>0.095 0.19 0.058</size>
-  	  </box>
+          <mesh>
+     	    <uri>model://mustard/meshes/mustard.obj</uri>
+	    <scale>0.1 0.1 0.1</scale>
+  	  </mesh>
         </geometry>
 
         <surface>

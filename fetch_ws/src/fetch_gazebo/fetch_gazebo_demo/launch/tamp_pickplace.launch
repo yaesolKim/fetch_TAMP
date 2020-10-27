@@ -1,5 +1,8 @@
 <launch>
 
+  <!-- Start navigation -->
+  <include file="$(find fetch_gazebo_demo)/launch/fetch_nav.launch" />
+
   <!-- Start MoveIt -->
   <include file="$(find fetch_moveit_config)/launch/move_group.launch" >
     <arg name="info" value="true"/><!-- publish grasp markers -->

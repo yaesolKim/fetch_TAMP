@@ -1,56 +1,56 @@
-topic_camera: "/image_publisher/image_raw"
-topic_camera_info: "/image_publisher/camera_info"
+#topic_camera: "/image_publisher/image_raw"
+#topic_camera_info: "/image_publisher/camera_info"
 
-#topic_camera: "/head_camera/rgb/image_raw"  #"/camera/color/image_rect_color" #"/usb_cam/image_raw"
-#topic_camera_info: "/head_camera/rgb/camera_info"  #"/camera/color/camera_info" #"/usb_cam/camera_info"
+topic_camera: "/head_camera/rgb/image_raw"  #"/camera/color/image_rect_color" #"/usb_cam/image_raw"
+topic_camera_info: "/head_camera/rgb/camera_info"  #"/camera/color/camera_info" #"/usb_cam/camera_info"
 topic_publishing: "dope"
 input_is_rectified: True   # Whether the input image is rectified (strongly suggested!)
 downscale_height: 500      # if the input image is larger than this, scale it down to this pixel height
 
 # Comment any of these lines to prevent detection / pose estimation of that object
 weights: {
-    #"cracker":"package://dope/weights/cracker_60.pth",
+    "cracker":"package://dope/weights/cracker_60.pth",
     #"gelatin":"package://dope/weights/gelatin_60.pth",
     "meat":"package://dope/weights/meat_20.pth",
     "mustard":"package://dope/weights/mustard_60.pth",
     #"bottle":"package://dope/weights/soup_60.pth",
     #"sugar":"package://dope/weights/sugar_60.pth",
     # "bleach":"package://dope/weights/bleach_28_dr.pth",
-    "TomatoSauce":"package://dope/weights/TomatoSauce.pth",
+    "soup":"package://dope/weights/soup_60.pth",
 }
 
 # Cuboid dimension in cm x,y,z
 dimensions: {
-    #"cracker": [16.403600692749023,21.343700408935547,7.179999828338623],
+    "cracker": [16.403600692749023,21.343700408935547,7.179999828338623],
     #"gelatin": [8.918299674987793, 7.311500072479248, 2.9983000755310059],
     "meat": [10.164673805236816,8.3542995452880859,5.7600898742675781],
     "mustard": [9.6024150848388672,19.130100250244141,5.824894905090332],
     #"bottle": [6.7659378051757813,10.185500144958496,6.771425724029541],
     #"sugar": [9.267730712890625,17.625339508056641,4.5134143829345703],
     #"bleach": [10.267730712890625,26.625339508056641,7.5134143829345703],
-    "TomatoSauce" : [ 8.2847003936767578, 7.0198001861572266, 6.6469998359680176 ]
+    "soup": [6.7659378051757813,10.185500144958496,6.771425724029541]
 }
 
 class_ids: {
-    #"cracker": 1,
+    "cracker": 1,
+    "meat":    2,
+    "mustard": 3,
+    "soup": 4
     #"gelatin": 2,
-    "meat":    3,
-    "mustard": 4,
     #"bottle":    5,
     #"sugar":   6,
     #"bleach":  7,
-    "TomatoSauce": 8
 }
 
 draw_colors: {
-    #"cracker": [13, 255, 128],  # green
+    "cracker": [13, 255, 128],  # green
     #"gelatin": [255, 255, 255],  # while
     "meat": [0, 104, 255],  # blue
     "mustard": [217,12, 232],  # magenta
     #"bottle": [255, 101, 0],  # orange
     #"sugar": [232, 222, 12],  # yellow
     #"bleach": [232, 222, 12],  # yellow
-    "TomatoSauce": [232, 222, 12]  # yellow
+    "soup": [232, 222, 12]  # yellow
 }
 
 # optional: provide a transform that is applied to the pose returned by DOPE
@@ -76,14 +76,14 @@ meshes: {
 
 # optional: If the specified meshes are not in meters, provide a scale here (e.g. if the mesh is in centimeters, scale should be 0.01). default scale: 1.0.
 mesh_scales: {
-    #"cracker": 0.01,
+    "cracker": 0.01,
     #"gelatin": 0.01,
     "meat":    0.01,
     "mustard": 0.01,
     #"bottle":    0.01,
     #"sugar":   0.01,
     #"bleach":  0.01,
-    "TomatoSauce":  0.01
+    "soup":  0.01
 }
 
 # Config params for DOPE
