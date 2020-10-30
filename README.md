@@ -26,6 +26,9 @@ $ catkin_make
 ```
 
 ### 4. Run
-terminal 1: `roslaunch fetch_gazebo tamp_playground.launch`   
-terminal 2: `roslaunch fetch_gazebo_demo tamp_pickplace.launch`
+#### fetch simulation
+terminal 1: `$ roslaunch fetch_gazebo tamp_playground.launch`   
+terminal 2: `$ roslaunch fetch_gazebo_demo tamp_pickplace.launch`
 
+#### Dope
+terminal 3: `$ roslaunch dope dope.launch`   
